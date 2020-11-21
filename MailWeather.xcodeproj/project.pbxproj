@@ -68,21 +68,85 @@
 		E1612BCE25657C1B002B8397 /* MailWeather */ = {
 			isa = PBXGroup;
 			children = (
+				E1F09A442569D30C00C438E0 /* Application */,
+				E1F09A3F2569CF1900C438E0 /* View */,
+				E1F09A4D2569D54A00C438E0 /* Storyboards */,
+				E1F09A4C2569D52B00C438E0 /* Library */,
+				E1F09A422569D2D300C438E0 /* Resources */,
+			);
+			path = MailWeather;
+			sourceTree = "<group>";
+		};
+		E1F09A3F2569CF1900C438E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1F09A512569D65C00C438E0 /* Views */,
+				E1F09A522569D66700C438E0 /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1F09A412569CF7E00C438E0 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				E1F09A1D2565913200C438E0 /* UIColorExtension.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		E1F09A422569D2D300C438E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1612BD825657C1F002B8397 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E1F09A442569D30C00C438E0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				E1612BCF25657C1B002B8397 /* AppDelegate.swift */,
 				E1612BD125657C1B002B8397 /* SceneDelegate.swift */,
+				E1612BDD25657C1F002B8397 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E1F09A4C2569D52B00C438E0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E1F09A412569CF7E00C438E0 /* UIColor */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E1F09A4D2569D54A00C438E0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E1612BD525657C1B002B8397 /* Main.storyboard */,
+				E1612BDA25657C1F002B8397 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E1F09A512569D65C00C438E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				E1F09A3825682BD100C438E0 /* MainInfoView.swift */,
 				E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */,
 				E1F09A252565B68900C438E0 /* CircleView.swift */,
 				E1F09A2F2566E31300C438E0 /* RingView.swift */,
 				E1F09A342566F9F600C438E0 /* DownloadRingView.swift */,
-				E1612BD325657C1B002B8397 /* HomeViewController.swift */,
-				E1612BD525657C1B002B8397 /* Main.storyboard */,
-				E1612BD825657C1F002B8397 /* Assets.xcassets */,
-				E1612BDA25657C1F002B8397 /* LaunchScreen.storyboard */,
-				E1612BDD25657C1F002B8397 /* Info.plist */,
-				E1F09A1D2565913200C438E0 /* UIColorExtension.swift */,
 			);
-			path = MailWeather;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1F09A522569D66700C438E0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1612BD325657C1B002B8397 /* HomeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7N89YQRF7B;
-				INFOPLIST_FILE = MailWeather/Info.plist;
+				INFOPLIST_FILE = MailWeather/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7N89YQRF7B;
-				INFOPLIST_FILE = MailWeather/Info.plist;
+				INFOPLIST_FILE = MailWeather/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
