@@ -23,6 +23,8 @@
 		E18776B7256AA62C00285931 /* TableViewViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776B6256AA62C00285931 /* TableViewViewModelType.swift */; };
 		E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */; };
 		E18776BF256AAC9500285931 /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */; };
+		E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */; };
+		E18776C8256ACA7800285931 /* StartStopDownloadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */; };
 		E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4A2569F2AE004D9B45 /* City.swift */; };
 		E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4D2569F2CC004D9B45 /* List.swift */; };
 		E1A8FF512569F321004D9B45 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF502569F321004D9B45 /* Main.swift */; };
@@ -61,6 +63,8 @@
 		E18776B6256AA62C00285931 /* TableViewViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModelType.swift; sourceTree = "<group>"; };
 		E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelType.swift; sourceTree = "<group>"; };
 		E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
+		E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopDownloadAnimation.swift; sourceTree = "<group>"; };
 		E1A8FF4A2569F2AE004D9B45 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E1A8FF4D2569F2CC004D9B45 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E1A8FF502569F321004D9B45 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 			children = (
 				E18776B6256AA62C00285931 /* TableViewViewModelType.swift */,
 				E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */,
+				E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -224,6 +229,14 @@
 				E18776B3256AA50400285931 /* WeatherAtTime.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E18776C5256ACA4000285931 /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */,
+			);
+			path = UIImageView;
 			sourceTree = "<group>";
 		};
 		E1A8FF5C2569F656004D9B45 /* NetworkManager */ = {
@@ -319,6 +332,7 @@
 			children = (
 				E1877691256A7E3400285931 /* Box */,
 				E1F09A412569CF7E00C438E0 /* UIColor */,
+				E18776C5256ACA4000285931 /* UIImageView */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -449,6 +463,7 @@
 				E187769C256A89D100285931 /* DetailTableViewController.swift in Sources */,
 				E1A8FF5F2569F803004D9B45 /* NetworkManager.swift in Sources */,
 				E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */,
+				E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */,
 				E1A8FF5A2569F375004D9B45 /* WeatherModel.swift in Sources */,
 				E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */,
 				E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */,
@@ -467,6 +482,7 @@
 				E18776B4256AA50400285931 /* WeatherAtTime.swift in Sources */,
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
+				E18776C8256ACA7800285931 /* StartStopDownloadAnimation.swift in Sources */,
 				E1F09A302566E31300C438E0 /* RingView.swift in Sources */,
 				E18776B7256AA62C00285931 /* TableViewViewModelType.swift in Sources */,
 				E1612BD225657C1B002B8397 /* SceneDelegate.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     var viewModel: TableViewViewModelType?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -11,6 +11,8 @@ class ViewModel: TableViewViewModelType {
     
     let net = NetworkManager<ForeCastProvider>()
     
+    weak var delegate: StartStopDownloadAnimation?
+    
     var temperatuture: Box<String?> = Box(nil)
     
     var city: Box<String?> = Box(nil)
@@ -39,7 +41,7 @@ class ViewModel: TableViewViewModelType {
     // MARK: - fetchRequest
     
     func loadData() {
-        // startDownloadAnimation()
+        delegate?.startDownloadAnimation()
         
         net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
             switch result {
@@ -50,7 +52,7 @@ class ViewModel: TableViewViewModelType {
                 print(error)
             }
             
-            // self.stopDownloadAnimation()
+            self.delegate?.stopDownloadAnimation()
         })
     }
     
@@ -73,8 +75,12 @@ class ViewModel: TableViewViewModelType {
         }
         
         self.city.value = city
-        self.temperatuture.value = resultWeatherList.first?.temperature
+        self.temperatuture.value = getCelsius(fromTemperature: resultWeatherList.first?.temperature ?? 0)
         self.weather.value = Weather(city: city,
                                     list: resultWeatherList)
+    }
+    
+    private func getCelsius(fromTemperature temp: Double) -> String {
+        return String(describing: Int(temp - 273.15)) + "°"
     }
 }

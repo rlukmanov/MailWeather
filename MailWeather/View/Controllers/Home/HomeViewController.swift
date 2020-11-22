@@ -32,15 +32,14 @@ class HomeViewController: UIViewController {
     @IBAction func startDownloadAnimation(_ sender: Any) {
         viewModel.loadData()
     }
-    
-    @IBAction func stopDownloadAnimation(_ sender: Any) {
-        // stopDownloadAnimation()
-    }
+
     
     // MARK: - View Controller life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.delegate = self
         
         viewModel.temperatuture.bind { [unowned self] in
             self.temperatureLabel.text = $0
@@ -49,6 +48,8 @@ class HomeViewController: UIViewController {
         viewModel.city.bind { [unowned self] in
             self.cityLabel.text = $0
         }
+        
+        viewModel.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,18 +57,6 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Animations
-    
-    private func startDownloadAnimation() {
-        internalDownloadRingView.startDownloadAnimation()
-        externalDownloadRingView.startDownloadAnimation()
-        mainInfoView.startDownloadAnimation()
-    }
-    
-    private func stopDownloadAnimation() {
-        internalDownloadRingView.stopDownloadAnimation()
-        externalDownloadRingView.stopDownloadAnimation()
-        mainInfoView.stopDownloadAnimation()
-    }
     
     private func appearAnimations() {
         internalRingView.animateRing(duration: 1.5)
@@ -77,20 +66,19 @@ class HomeViewController: UIViewController {
     }
 }
 
-// -------------------------------
+// MARK: - StartStopDownloadAnimation
 
-extension UIImageView {
-    func load(url: URL?) {
-        guard let url = url else { return }
-        
-        DispatchQueue.global().async { [weak self] in
-            
-            guard let data = try? Data(contentsOf: url) else { return }
-            guard let image = UIImage(data: data) else { return }
-            
-            DispatchQueue.main.async {
-                self?.image = image
-            }
-        }
+extension HomeViewController: StartStopDownloadAnimation {
+    
+    func startDownloadAnimation() {
+        internalDownloadRingView.startDownloadAnimation()
+        externalDownloadRingView.startDownloadAnimation()
+        mainInfoView.startDownloadAnimation()
+    }
+    
+    func stopDownloadAnimation() {
+        internalDownloadRingView.stopDownloadAnimation()
+        externalDownloadRingView.stopDownloadAnimation()
+        mainInfoView.stopDownloadAnimation()
     }
 }
