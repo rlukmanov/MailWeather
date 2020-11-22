@@ -33,6 +33,7 @@
 		E1A8FF5A2569F375004D9B45 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF592569F375004D9B45 /* WeatherModel.swift */; };
 		E1A8FF5F2569F803004D9B45 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */; };
 		E1B51451256B079900B896F9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51450256B079900B896F9 /* StringExtension.swift */; };
+		E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51453256B0BEF00B896F9 /* NavigationController.swift */; };
 		E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3F6ED2569EB9C00FA2183 /* Response.swift */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
@@ -74,6 +75,7 @@
 		E1A8FF592569F375004D9B45 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E1B51450256B079900B896F9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E1B51453256B0BEF00B896F9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E1C3F6ED2569EB9C00FA2183 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		E1B51456256B0C7900B896F9 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51453256B0BEF00B896F9 /* NavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		E1C3F6EC2569EAEC00FA2183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +343,7 @@
 			children = (
 				E18776A7256A952000285931 /* Home */,
 				E18776A9256A952500285931 /* Table */,
+				E1B51456256B0C7900B896F9 /* Navigation */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -492,6 +503,7 @@
 				E1F09A582569DFF800C438E0 /* Constants.swift in Sources */,
 				E1F09A352566F9F600C438E0 /* DownloadRingView.swift in Sources */,
 				E18776B4256AA50400285931 /* WeatherAtTime.swift in Sources */,
+				E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */,
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
 				E18776C8256ACA7800285931 /* StartStopDownloadAnimation.swift in Sources */,
