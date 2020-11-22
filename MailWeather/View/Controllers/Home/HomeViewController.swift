@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var openDetailVCButton: UIButton!
     
     var viewModel = ViewModel()
     
@@ -33,7 +34,6 @@ class HomeViewController: UIViewController {
         viewModel.loadData()
     }
 
-    
     // MARK: - View Controller life cycle
     
     override func viewDidLoad() {
@@ -85,11 +85,13 @@ extension HomeViewController: StartStopDownloadAnimation {
         internalDownloadRingView.startDownloadAnimation()
         externalDownloadRingView.startDownloadAnimation()
         mainInfoView.startDownloadAnimation()
+        openDetailVCButton.isEnabled = false
     }
     
     func stopDownloadAnimation() {
         internalDownloadRingView.stopDownloadAnimation()
         externalDownloadRingView.stopDownloadAnimation()
         mainInfoView.stopDownloadAnimation()
+        openDetailVCButton.isEnabled = true
     }
 }

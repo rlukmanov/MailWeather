@@ -12,4 +12,5 @@ protocol TableViewCellViewModelType: class {
     var temperature: String { get }
     var weatherDescription: String { get }
     var humidity: String { get }
+    var precipitation: String { get }
 }

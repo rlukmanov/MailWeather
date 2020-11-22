@@ -48,6 +48,7 @@ class ViewModel {
                                               temperature: item.main.temp,
                                               weatherDescription: item.weather.first?.weatherDescription ?? "",
                                               humidity: item.main.humidity,
+                                              precipitation: item.pop,
                                               timezone: timezone)
             
             resultWeatherList.append(weatherAtTime)

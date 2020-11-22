@@ -22,11 +22,15 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     var weatherDescription: String {
-        return weatherAtTime.weatherDescription
+        return weatherAtTime.weatherDescription.capitalizingFirstLetter()
     }
     
     var humidity: String {
         return "Влажность\n" + String(describing: weatherAtTime.humidity) + "%"
+    }
+    
+    var precipitation: String {
+        return "Осадки\n" + convertPrecipitation(value: weatherAtTime.precipitation) + "%"
     }
     
     // MARK: - Init
@@ -59,7 +63,7 @@ class TableViewCellViewModel: TableViewCellViewModelType {
         return resultConvert
     }
 
-    func convertPrecipitation(value: Float) -> String {
+    func convertPrecipitation(value: Double) -> String {
         return String(Int(round(value * 100)))
     }
 }

@@ -12,5 +12,6 @@ struct WeatherAtTime {
     var temperature: Double
     var weatherDescription: String
     var humidity: Int
+    var precipitation: Double
     var timezone: Int
 }

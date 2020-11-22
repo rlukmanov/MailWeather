@@ -24,6 +24,7 @@ class DetailTableViewCell: UITableViewCell {
             descriptionLabel.text = viewModel.weatherDescription
             temperatureLabel.text = viewModel.temperature
             humidityLabel.text = viewModel.humidity
+            precipitationLabel.text = viewModel.precipitation
         }
     }
 }
