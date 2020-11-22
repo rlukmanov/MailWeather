@@ -42,7 +42,6 @@ extension URLRequestBuilder {
 enum ForeCastProvider: URLRequestBuilder {
     case showWeather(city: String)
     
-    
     var path: String {
         switch self {
         case .showWeather:

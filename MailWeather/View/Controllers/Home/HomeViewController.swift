@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
     
     var viewModel = ViewModel()
@@ -31,6 +32,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func startDownloadAnimation(_ sender: Any) {
+        startDownloadAnimation()
         viewModel.loadData()
     }
 
@@ -39,16 +41,20 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.delegate = self
-        
         viewModel.temperatuture.bind { [unowned self] in
             self.temperatureLabel.text = $0
+            stopDownloadAnimation()
         }
         
         viewModel.city.bind { [unowned self] in
             self.cityLabel.text = $0
         }
         
+        viewModel.image.bind { [unowned self] in
+            self.iconImageView.image = $0
+        }
+        
+        startDownloadAnimation()
         viewModel.loadData()
     }
     

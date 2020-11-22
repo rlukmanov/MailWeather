@@ -6,21 +6,22 @@
 //
 
 import Foundation
+import UIKit
 
 class ViewModel {
     
     // MARK: - Properties
     
     let net = NetworkManager<ForeCastProvider>()
-    weak var delegate: StartStopDownloadAnimation?
     var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
+    var image: Box<UIImage?> = Box(UIImage())
+    
     var weather: Weather?
     
     // MARK: - fetchRequest
     
     func loadData() {
-        delegate?.startDownloadAnimation()
         net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
             switch result {
             case .success(let response):
@@ -28,7 +29,6 @@ class ViewModel {
             case .failure(let error):
                 print(error)
             }
-            self.delegate?.stopDownloadAnimation()
         })
     }
     
@@ -54,13 +54,28 @@ class ViewModel {
             resultWeatherList.append(weatherAtTime)
         }
         
+        let url = convertImageURL(iconId: listWeather.first?.weather.first?.icon)
+        let newIconImageView = UIImageView()
+        newIconImageView.load(url: url) {
+            self.image.value = newIconImageView.image
+        }
+        
         self.city.value = city
-        self.temperatuture.value = getCelsius(fromTemperature: resultWeatherList.first?.temperature ?? 0)
+        self.temperatuture.value = convertCelsius(fromTemperature: resultWeatherList.first?.temperature ?? 0)
         self.weather = Weather(city: city, list: resultWeatherList)
     }
     
-    private func getCelsius(fromTemperature temp: Double) -> String {
+    private func convertCelsius(fromTemperature temp: Double) -> String {
         return String(describing: Int(temp - 273.15)) + "°"
+    }
+    
+    private func convertImageURL(iconId: String?) -> URL? {
+        guard let iconId = iconId else { return nil }
+        
+        var stringURL = Constants.Api.urlIcon + "/" + Constants.Api.pathIcon
+        stringURL += iconId
+        stringURL += Constants.Api.formatIcon
+        return URL(string: stringURL)
     }
 }
 

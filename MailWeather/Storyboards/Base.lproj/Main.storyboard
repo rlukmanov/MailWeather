@@ -137,10 +137,10 @@
                                 <rect key="frame" x="86" y="283" width="242" height="242"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempIconDay" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-Rb-g2E">
-                                        <rect key="frame" x="31" y="75" width="75" height="75"/>
+                                        <rect key="frame" x="26" y="63" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="mBW-tA-76N"/>
-                                            <constraint firstAttribute="width" constant="75" id="uQh-vN-Huh"/>
+                                            <constraint firstAttribute="height" constant="100" id="mBW-tA-76N" userLabel="height = 100"/>
+                                            <constraint firstAttribute="width" constant="100" id="uQh-vN-Huh" userLabel="width = 100"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Москва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2g-WM-PIm">
@@ -150,7 +150,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddR-4b-TrT">
-                                        <rect key="frame" x="106.5" y="66" width="89.5" height="84"/>
+                                        <rect key="frame" x="121.5" y="66" width="89.5" height="84"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="70"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -158,11 +158,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Y2g-WM-PIm" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" id="Dzb-IS-Zlb"/>
-                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="trailing" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="-15" id="GyH-3a-kaI"/>
+                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="trailing" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="5" id="GyH-3a-kaI"/>
                                     <constraint firstItem="Y2g-WM-PIm" firstAttribute="top" secondItem="ddR-4b-TrT" secondAttribute="bottom" constant="5" id="Tru-3K-oru"/>
                                     <constraint firstItem="ddR-4b-TrT" firstAttribute="bottom" secondItem="2wk-j2-0xE" secondAttribute="centerY" constant="29" id="emI-FY-oou"/>
-                                    <constraint firstItem="ddR-4b-TrT" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="30" id="ieb-pX-6Ks"/>
-                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="bottom" secondItem="ddR-4b-TrT" secondAttribute="bottom" id="n9r-Ro-HNK"/>
+                                    <constraint firstItem="ddR-4b-TrT" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="45" id="ieb-pX-6Ks"/>
+                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="centerY" secondItem="ddR-4b-TrT" secondAttribute="centerY" constant="5" id="nAg-f8-Nf1"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSq-RC-cl5">
@@ -219,6 +219,7 @@
                         <outlet property="cityLabel" destination="Y2g-WM-PIm" id="w4x-pZ-whe"/>
                         <outlet property="externalDownloadRingView" destination="7Fy-TW-0rG" id="HRo-BP-NXu"/>
                         <outlet property="externalRingView" destination="Okh-tp-nUp" id="SVJ-KB-yD0"/>
+                        <outlet property="iconImageView" destination="Oyx-Rb-g2E" id="zIx-f3-IeA"/>
                         <outlet property="internalDownloadRingView" destination="Ey0-ea-w09" id="mKW-wl-ANj"/>
                         <outlet property="internalRingView" destination="j6G-zV-KZ1" id="hsF-cV-gvB"/>
                         <outlet property="leftGroundView" destination="52c-ZH-z6d" id="gUq-XC-dGT"/>

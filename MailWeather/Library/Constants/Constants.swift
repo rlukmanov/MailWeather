@@ -10,9 +10,12 @@ import Foundation
 struct Constants {
     struct Api {
         static let url = "https://api.openweathermap.org"
+        static let urlIcon = "https://openweathermap.org"
         static let key = "da9f74ec5dd6df3021ce4c5f8ecdc569"
         static let path = "data/2.5/forecast"
+        static let pathIcon = "img/wn/" // 10d@2x.png
         static let language = "ru"
+        static let formatIcon = "@2x.png"
     }
     
     struct Identifier {
