@@ -20,6 +20,7 @@
 		E1A8FF542569F343004D9B45 /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF532569F343004D9B45 /* Sys.swift */; };
 		E1A8FF572569F359004D9B45 /* Pod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF562569F359004D9B45 /* Pod.swift */; };
 		E1A8FF5A2569F375004D9B45 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF592569F375004D9B45 /* Weather.swift */; };
+		E1A8FF5F2569F803004D9B45 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */; };
 		E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3F6ED2569EB9C00FA2183 /* Response.swift */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
@@ -48,6 +49,7 @@
 		E1A8FF532569F343004D9B45 /* Sys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
 		E1A8FF562569F359004D9B45 /* Pod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pod.swift; sourceTree = "<group>"; };
 		E1A8FF592569F375004D9B45 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E1C3F6ED2569EB9C00FA2183 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				E1F09A442569D30C00C438E0 /* Application */,
 				E1C3F6EC2569EAEC00FA2183 /* Model */,
 				E1F09A3F2569CF1900C438E0 /* View */,
+				E1A8FF5C2569F656004D9B45 /* NetworkManager */,
 				E1F09A4D2569D54A00C438E0 /* Storyboards */,
 				E1F09A4C2569D52B00C438E0 /* Library */,
 				E1F09A422569D2D300C438E0 /* Resources */,
@@ -118,16 +121,24 @@
 			path = MailWeather;
 			sourceTree = "<group>";
 		};
+		E1A8FF5C2569F656004D9B45 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		E1C3F6EC2569EAEC00FA2183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E1C3F6ED2569EB9C00FA2183 /* Response.swift */,
-				E1A8FF4A2569F2AE004D9B45 /* City.swift */,
-				E1A8FF592569F375004D9B45 /* Weather.swift */,
 				E1A8FF4D2569F2CC004D9B45 /* List.swift */,
 				E1A8FF502569F321004D9B45 /* Main.swift */,
+				E1A8FF592569F375004D9B45 /* Weather.swift */,
 				E1A8FF532569F343004D9B45 /* Sys.swift */,
 				E1A8FF562569F359004D9B45 /* Pod.swift */,
+				E1A8FF4A2569F2AE004D9B45 /* City.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A8FF5F2569F803004D9B45 /* NetworkManager.swift in Sources */,
 				E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */,
 				E1A8FF5A2569F375004D9B45 /* Weather.swift in Sources */,
 				E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */,

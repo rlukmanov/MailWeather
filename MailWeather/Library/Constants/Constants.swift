@@ -9,6 +9,9 @@ import Foundation
 
 struct Constants {
     struct Api {
-        static let key = 0
+        static let url = "https://api.openweathermap.org"
+        static let key = "da9f74ec5dd6df3021ce4c5f8ecdc569"
+        static let path = "data/2.5/forecast"
+        static let language = "ru"
     }
 }

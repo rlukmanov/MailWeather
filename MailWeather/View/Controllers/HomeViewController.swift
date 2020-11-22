@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController {
     
@@ -38,5 +39,22 @@ class HomeViewController: UIViewController {
         internalDownloadRingView.stopDownloadAnimation()
         externalDownloadRingView.stopDownloadAnimation()
         mainInfoView.stopDownloadAnimation()
+    }
+    
+    func fetchRequest() {
+//        let url = "dasd"
+//        AF.request(url).responseDecodable(of: Response.self) { (response) in
+//            guard let listWeather = response.value else { return }
+//            print(listWeather)
+//        }
+    }
+    
+    override func viewDidLoad() {
+        let net = NetworkManager<ForeCastProvider>()
+
+        net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
+            print()
+            
+        })
     }
 }
