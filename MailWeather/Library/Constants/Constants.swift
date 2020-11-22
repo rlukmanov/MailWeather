@@ -14,4 +14,8 @@ struct Constants {
         static let path = "data/2.5/forecast"
         static let language = "ru"
     }
+    
+    struct Identifier {
+        static let cell = "cell"
+    }
 }

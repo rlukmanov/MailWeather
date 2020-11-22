@@ -18,6 +18,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var leftGroundView: CircleView!
     @IBOutlet weak var rightGroundView: CircleView!
     
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    var viewModel: ViewModel! {
+        didSet {
+            temperatureLabel.text = viewModel.temperatuture
+            cityLabel.text = viewModel.city
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -41,20 +51,48 @@ class HomeViewController: UIViewController {
         mainInfoView.stopDownloadAnimation()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel = ViewModel()
+    }
+    
     func fetchRequest() {
 //        let url = "dasd"
 //        AF.request(url).responseDecodable(of: Response.self) { (response) in
 //            guard let listWeather = response.value else { return }
 //            print(listWeather)
 //        }
-    }
-    
-    override func viewDidLoad() {
+        
         let net = NetworkManager<ForeCastProvider>()
-
+        var weatherList: Response?
+        
         net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
-            print()
-            
+            switch result {
+            case .success(let response):
+                weatherList = response
+            case .failure(let error):
+                print(error)
+            }
+            //print(weatherList?.list.first)
         })
+    }
+}
+
+// -------------------------------
+
+extension UIImageView {
+    func load(url: URL?) {
+        guard let url = url else { return }
+        
+        DispatchQueue.global().async { [weak self] in
+            
+            guard let data = try? Data(contentsOf: url) else { return }
+            guard let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                self?.image = image
+            }
+        }
     }
 }

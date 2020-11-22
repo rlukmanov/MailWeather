@@ -12,7 +12,6 @@ import Alamofire
 protocol URLRequestBuilder: URLRequestConvertible {
     var baseURL: String { get }
     var path: String { get }
-    // var headers: HTTPHeaders? { get }
     var parameters: Parameters? { get }
     var method: HTTPMethod { get }
 }
@@ -28,11 +27,9 @@ extension URLRequestBuilder {
         
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
-        //request.setValue(<#T##value: String?##String?#>, forHTTPHeaderField: <#T##String#>)
         
         switch method {
         case .get:
-            //request.allHTTPHeaderFields = headers?.dictionary
             request = try URLEncoding.default.encode(request, with: parameters)
         default:
             break
@@ -45,14 +42,13 @@ extension URLRequestBuilder {
 enum ForeCastProvider: URLRequestBuilder {
     case showWeather(city: String)
     
+    
     var path: String {
         switch self {
         case .showWeather:
             return Constants.Api.path
         }
     }
-    
-    // var headers: HTTPHeaders?
     
     var parameters: Parameters? {
         switch self {
