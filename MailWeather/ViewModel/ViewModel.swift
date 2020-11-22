@@ -36,6 +36,7 @@ class ViewModel {
     
     private func saveLoadedData(from response: Response) {
         let city = response.city.name
+        let timezone = response.city.timezone
         let listWeather = response.list
         var resultWeatherList = [WeatherAtTime]()
         
@@ -45,8 +46,10 @@ class ViewModel {
         listWeather[startIndex..<maxIndex].forEach { item in
             let weatherAtTime = WeatherAtTime(dt: item.dt,
                                               temperature: item.main.temp,
-                                              weatherDescription: item.weather.description,
-                                              humidity: item.main.humidity)
+                                              weatherDescription: item.weather.first?.weatherDescription ?? "",
+                                              humidity: item.main.humidity,
+                                              timezone: timezone)
+            
             resultWeatherList.append(weatherAtTime)
         }
         

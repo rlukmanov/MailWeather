@@ -23,6 +23,7 @@ class DetailTableViewCell: UITableViewCell {
             timeLabel.text = viewModel.dt
             descriptionLabel.text = viewModel.weatherDescription
             temperatureLabel.text = viewModel.temperature
+            humidityLabel.text = viewModel.humidity
         }
     }
 }

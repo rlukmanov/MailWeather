@@ -9,31 +9,57 @@ import Foundation
 
 class TableViewCellViewModel: TableViewCellViewModelType {
     
+    // MARK: - Properties
+    
     private var weatherAtTime: WeatherAtTime
     
     var dt: String {
-        return String(describing: weatherAtTime.dt)
+        return convertTime(time: weatherAtTime.dt, timeZone: weatherAtTime.timezone)
     }
     
     var temperature: String {
-        return getCelsius(fromTemperature: weatherAtTime.temperature)
+        return convertCelsius(fromTemperature: weatherAtTime.temperature)
     }
     
     var weatherDescription: String {
-        //print(String(describing: weatherAtTime.weatherDescription))
-        return "Ясно" //
+        return weatherAtTime.weatherDescription
     }
     
     var humidity: String {
-        print(weatherAtTime.humidity)
-        return "0"
+        return "Влажность\n" + String(describing: weatherAtTime.humidity) + "%"
     }
+    
+    // MARK: - Init
     
     init(weatherAtTime: WeatherAtTime) {
         self.weatherAtTime = weatherAtTime
     }
     
-    private func getCelsius(fromTemperature temp: Double) -> String {
+    // MARK: - Convert
+    
+    private func convertCelsius(fromTemperature temp: Double) -> String {
         return String(describing: Int(temp - 273.15)) + "°"
+    }
+    
+    func convertTime(time: Int, timeZone: Int) -> String {
+        guard let timeZone = TimeZone(secondsFromGMT: timeZone) else { return "" }
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(time))
+        var calendar = Calendar.current
+        var resultConvert: String = ""
+        calendar.timeZone = timeZone
+        
+        let currentHour = calendar.component(.hour, from: date)
+        resultConvert += String(describing: calendar.component(.hour, from: date))
+        if currentHour < 10 {
+            resultConvert.insert("0", at: resultConvert.startIndex)
+        }
+        resultConvert += ":00"
+        
+        return resultConvert
+    }
+
+    func convertPrecipitation(value: Float) -> String {
+        return String(Int(round(value * 100)))
     }
 }
