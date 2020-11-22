@@ -29,13 +29,6 @@ class HomeViewController: UIViewController {
         return .lightContent
     }
     
-    @IBAction func doAnimate(_ sender: Any) {
-        internalRingView.animateRing(duration: 1.5)
-        externalRingView.animateRing(duration: 1.5, delay: 0.25)
-        leftGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
-        rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
-    }
-    
     @IBAction func startDownloadAnimation(_ sender: Any) {
         viewModel.loadData()
     }
@@ -56,8 +49,10 @@ class HomeViewController: UIViewController {
         viewModel.city.bind { [unowned self] in
             self.cityLabel.text = $0
         }
-        
-        // fetchRequest()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        appearAnimations()
     }
     
     // MARK: - Animations
@@ -72,6 +67,13 @@ class HomeViewController: UIViewController {
         internalDownloadRingView.stopDownloadAnimation()
         externalDownloadRingView.stopDownloadAnimation()
         mainInfoView.stopDownloadAnimation()
+    }
+    
+    private func appearAnimations() {
+        internalRingView.animateRing(duration: 1.5)
+        externalRingView.animateRing(duration: 1.5, delay: 0.25)
+        leftGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
+        rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
     }
 }
 
