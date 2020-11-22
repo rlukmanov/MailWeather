@@ -17,6 +17,7 @@
 		E187768E256A797700285931 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187768D256A797700285931 /* ViewModel.swift */; };
 		E1877693256A7E3F00285931 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1877692256A7E3F00285931 /* Box.swift */; };
 		E187769C256A89D100285931 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187769B256A89D100285931 /* DetailTableViewController.swift */; };
+		E18776A2256A8D7300285931 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776A1256A8D7300285931 /* DetailTableViewCell.swift */; };
 		E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4A2569F2AE004D9B45 /* City.swift */; };
 		E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4D2569F2CC004D9B45 /* List.swift */; };
 		E1A8FF512569F321004D9B45 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF502569F321004D9B45 /* Main.swift */; };
@@ -49,6 +50,7 @@
 		E187768D256A797700285931 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E1877692256A7E3F00285931 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		E187769B256A89D100285931 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		E18776A1256A8D7300285931 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		E1A8FF4A2569F2AE004D9B45 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E1A8FF4D2569F2CC004D9B45 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E1A8FF502569F321004D9B45 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -152,6 +154,42 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E18776A4256A94FE00285931 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */,
+				E1F09A252565B68900C438E0 /* CircleView.swift */,
+				E1F09A342566F9F600C438E0 /* DownloadRingView.swift */,
+				E1F09A3825682BD100C438E0 /* MainInfoView.swift */,
+				E1F09A2F2566E31300C438E0 /* RingView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E18776A6256A950F00285931 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E18776A1256A8D7300285931 /* DetailTableViewCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		E18776A7256A952000285931 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E1612BD325657C1B002B8397 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E18776A9256A952500285931 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E187769B256A89D100285931 /* DetailTableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		E1A8FF5C2569F656004D9B45 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,11 +268,8 @@
 		E1F09A512569D65C00C438E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */,
-				E1F09A252565B68900C438E0 /* CircleView.swift */,
-				E1F09A342566F9F600C438E0 /* DownloadRingView.swift */,
-				E1F09A3825682BD100C438E0 /* MainInfoView.swift */,
-				E1F09A2F2566E31300C438E0 /* RingView.swift */,
+				E18776A4256A94FE00285931 /* Home */,
+				E18776A6256A950F00285931 /* Table */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,8 +277,8 @@
 		E1F09A522569D66700C438E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E1612BD325657C1B002B8397 /* HomeViewController.swift */,
-				E187769B256A89D100285931 /* DetailTableViewController.swift */,
+				E18776A7256A952000285931 /* Home */,
+				E18776A9256A952500285931 /* Table */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -389,6 +424,7 @@
 				E1612BD025657C1B002B8397 /* AppDelegate.swift in Sources */,
 				E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */,
 				E1A8FF542569F343004D9B45 /* Sys.swift in Sources */,
+				E18776A2256A8D7300285931 /* DetailTableViewCell.swift in Sources */,
 				E1F09A3925682BD100C438E0 /* MainInfoView.swift in Sources */,
 				E1A8FF572569F359004D9B45 /* Pod.swift in Sources */,
 				E1F09A262565B68900C438E0 /* CircleView.swift in Sources */,
