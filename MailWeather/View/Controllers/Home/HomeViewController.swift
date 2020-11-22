@@ -10,6 +10,8 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var internalRingView: RingView!
     @IBOutlet weak var externalRingView: RingView!
     @IBOutlet weak var internalDownloadRingView: DownloadRingView!
@@ -21,14 +23,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
-    let net = NetworkManager<ForeCastProvider>()
-    
-    var viewModel: ViewModel! {
-        didSet {
-            temperatureLabel.text = viewModel.temperatuture
-            cityLabel.text = viewModel.city
-        }
-    }
+    var viewModel = ViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -42,36 +37,41 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func startDownloadAnimation(_ sender: Any) {
+        viewModel.loadData()
+    }
+    
+    @IBAction func stopDownloadAnimation(_ sender: Any) {
+        // stopDownloadAnimation()
+    }
+    
+    // MARK: - View Controller life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel.temperatuture.bind { [unowned self] in
+            self.temperatureLabel.text = $0
+        }
+        
+        viewModel.city.bind { [unowned self] in
+            self.cityLabel.text = $0
+        }
+        
+        // fetchRequest()
+    }
+    
+    // MARK: - Animations
+    
+    private func startDownloadAnimation() {
         internalDownloadRingView.startDownloadAnimation()
         externalDownloadRingView.startDownloadAnimation()
         mainInfoView.startDownloadAnimation()
     }
     
-    @IBAction func stopDownloadAnimation(_ sender: Any) {
+    private func stopDownloadAnimation() {
         internalDownloadRingView.stopDownloadAnimation()
         externalDownloadRingView.stopDownloadAnimation()
         mainInfoView.stopDownloadAnimation()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        viewModel = ViewModel()
-        fetchRequest()
-    }
-    
-    func fetchRequest() {
-        var weatherList: Response?
-        
-        net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
-            switch result {
-            case .success(let response):
-                weatherList = response
-            case .failure(let error):
-                print(error)
-            }
-            print(weatherList?.list.first)
-        })
     }
 }
 

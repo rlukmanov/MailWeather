@@ -18,4 +18,8 @@ struct Constants {
     struct Identifier {
         static let cell = "cell"
     }
+    
+    struct Other {
+        static let countRows = 8
+    }
 }
