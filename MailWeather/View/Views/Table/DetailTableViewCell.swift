@@ -15,4 +15,14 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var iconWeatherImageView: UIImageView!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var precipitationLabel: UILabel!
+    
+    weak var viewModel: TableViewCellViewModelType? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            
+            timeLabel.text = viewModel.dt
+            descriptionLabel.text = viewModel.weatherDescription
+            temperatureLabel.text = viewModel.temperature
+        }
+    }
 }

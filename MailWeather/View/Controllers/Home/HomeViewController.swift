@@ -21,6 +21,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
+    let net = NetworkManager<ForeCastProvider>()
+    
     var viewModel: ViewModel! {
         didSet {
             temperatureLabel.text = viewModel.temperatuture
@@ -55,16 +57,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = ViewModel()
+        fetchRequest()
     }
     
     func fetchRequest() {
-//        let url = "dasd"
-//        AF.request(url).responseDecodable(of: Response.self) { (response) in
-//            guard let listWeather = response.value else { return }
-//            print(listWeather)
-//        }
-        
-        let net = NetworkManager<ForeCastProvider>()
         var weatherList: Response?
         
         net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
@@ -74,7 +70,7 @@ class HomeViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
-            //print(weatherList?.list.first)
+            print(weatherList?.list.first)
         })
     }
 }

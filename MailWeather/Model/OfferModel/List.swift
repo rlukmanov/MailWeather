@@ -10,7 +10,7 @@ import Foundation
 struct List: Codable {
     let dt: Int // Time of data forecasted, unix, UTC
     let main: Main
-    let weather: [Weather]
+    let weather: [WeatherModel]
     let pop: Double // Probability of precipitation
     let sys: Sys
     let dtTxt: String // Time of data forecasted, ISO, UTC

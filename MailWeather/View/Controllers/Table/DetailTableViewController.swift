@@ -9,6 +9,8 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
     
+    var viewModel: TableViewViewModelType?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -17,18 +19,24 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewModel = ViewModel()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return viewModel?.numberOfRows() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.cell, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+        guard let tableCell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifier.cell, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
         
-        return cell
+        guard let viewModel = viewModel else { return UITableViewCell() }
+        
+        let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+        tableCell.viewModel = cellViewModel
+        
+        return tableCell
     }
 }

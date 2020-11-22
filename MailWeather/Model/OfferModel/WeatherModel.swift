@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct WeatherModel: Codable {
     let id: Int
     let main: String // Group of weather parameters
     let weatherDescription: String // Weather condition within the group
