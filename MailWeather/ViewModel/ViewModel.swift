@@ -7,51 +7,28 @@
 
 import Foundation
 
-class ViewModel: TableViewViewModelType {
+class ViewModel {
     
     let net = NetworkManager<ForeCastProvider>()
     
     weak var delegate: StartStopDownloadAnimation?
     
     var temperatuture: Box<String?> = Box(nil)
-    
     var city: Box<String?> = Box(nil)
     
-    var weather: Box<Weather?> = Box(nil)
-    
-    var weatherModel = Weather(city: "Moscow",
-                                  list: [ WeatherAtTime(dt: 0, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 1, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 2, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 3, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 4, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 5, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 6, temperature: 0, weatherDescription: "0", humidity: 0),
-                                          WeatherAtTime(dt: 7, temperature: 0, weatherDescription: "0", humidity: 0)])
-    
-    func numberOfRows() -> Int {
-        return weatherModel.list.count
-    }
-    
-    func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModelType? {
-        let weatherAtCell = weatherModel.list[indexPath.row]
-        return TableViewCellViewModel(weatherAtTime: weatherAtCell)
-    }
+    var weather: Weather?
     
     // MARK: - fetchRequest
     
     func loadData() {
         delegate?.startDownloadAnimation()
-        
         net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
             switch result {
             case .success(let response):
                 self.saveLoadedData(from: response)
-                // print(weatherList?.list.first)
             case .failure(let error):
                 print(error)
             }
-            
             self.delegate?.stopDownloadAnimation()
         })
     }
@@ -76,11 +53,24 @@ class ViewModel: TableViewViewModelType {
         
         self.city.value = city
         self.temperatuture.value = getCelsius(fromTemperature: resultWeatherList.first?.temperature ?? 0)
-        self.weather.value = Weather(city: city,
-                                    list: resultWeatherList)
+        self.weather = Weather(city: city, list: resultWeatherList)
     }
     
     private func getCelsius(fromTemperature temp: Double) -> String {
         return String(describing: Int(temp - 273.15)) + "°"
+    }
+}
+
+// MARK: - TableViewViewModelType
+
+extension ViewModel: TableViewViewModelType {
+    
+    func numberOfRows() -> Int {
+        return weather?.list.count ?? 0
+    }
+    
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModelType? {
+        let weatherAtCell = (weather?.list[indexPath.row])!
+        return TableViewCellViewModel(weatherAtTime: weatherAtCell)
     }
 }

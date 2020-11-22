@@ -10,5 +10,5 @@ import Foundation
 protocol TableViewViewModelType {
     func numberOfRows() -> Int
     func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModelType?
-    var weather: Box<Weather?> { get }
+    var weather: Weather? { get }
 }
