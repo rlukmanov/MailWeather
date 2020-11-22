@@ -56,6 +56,17 @@ class HomeViewController: UIViewController {
         appearAnimations()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func openDetailVC(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyboard.instantiateViewController(identifier: Constants.Identifier.detailVC) as! DetailTableViewController
+        
+        newViewController.viewModel = viewModel
+
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
     // MARK: - Animations
     
     private func appearAnimations() {

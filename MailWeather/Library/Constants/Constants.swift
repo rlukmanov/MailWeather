@@ -17,6 +17,8 @@ struct Constants {
     
     struct Identifier {
         static let cell = "cell"
+        static let homeVC = "HomeViewController"
+        static let detailVC = "DetailTableViewController"
     }
     
     struct Other {

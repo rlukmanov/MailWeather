@@ -21,8 +21,6 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel = ViewModel()
     }
 
     // MARK: - Table view data source

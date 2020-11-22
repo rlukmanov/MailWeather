@@ -9,13 +9,12 @@ import Foundation
 
 class ViewModel {
     
+    // MARK: - Properties
+    
     let net = NetworkManager<ForeCastProvider>()
-    
     weak var delegate: StartStopDownloadAnimation?
-    
     var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
-    
     var weather: Weather?
     
     // MARK: - fetchRequest

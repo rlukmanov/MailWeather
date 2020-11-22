@@ -16,18 +16,24 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     var temperature: String {
-        return "0"
+        return getCelsius(fromTemperature: weatherAtTime.temperature)
     }
     
     var weatherDescription: String {
-        return "0"
+        //print(String(describing: weatherAtTime.weatherDescription))
+        return "Ясно" //
     }
     
     var humidity: String {
+        print(weatherAtTime.humidity)
         return "0"
     }
     
     init(weatherAtTime: WeatherAtTime) {
         self.weatherAtTime = weatherAtTime
+    }
+    
+    private func getCelsius(fromTemperature temp: Double) -> String {
+        return String(describing: Int(temp - 273.15)) + "°"
     }
 }
