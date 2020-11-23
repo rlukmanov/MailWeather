@@ -111,6 +111,7 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         startDownloadAnimation()
         viewModel.loadData(city: searchBar.text ?? "")
-        self.view.endEditing(true)
+        searchBar.text = nil
+        view.endEditing(true)
     }
 }
