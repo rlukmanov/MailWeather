@@ -34,6 +34,9 @@
 		E1B51451256B079900B896F9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51450256B079900B896F9 /* StringExtension.swift */; };
 		E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51453256B0BEF00B896F9 /* NavigationController.swift */; };
 		E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3F6ED2569EB9C00FA2183 /* Response.swift */; };
+		E1ED31E3256C1AC100572FA0 /* Cod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31E2256C1AC100572FA0 /* Cod.swift */; };
+		E1ED31E6256C1F1700572FA0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31E5256C1F1700572FA0 /* Errors.swift */; };
+		E1ED31EE256C316100572FA0 /* StopStartDownloadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
 		E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */; };
@@ -75,6 +78,9 @@
 		E1B51450256B079900B896F9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E1B51453256B0BEF00B896F9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E1C3F6ED2569EB9C00FA2183 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E1ED31E2256C1AC100572FA0 /* Cod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cod.swift; sourceTree = "<group>"; };
+		E1ED31E5256C1F1700572FA0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopStartDownloadAnimation.swift; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 			children = (
 				E18776B6256AA62C00285931 /* TableViewViewModelType.swift */,
 				E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */,
+				E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 				E1A8FF532569F343004D9B45 /* Sys.swift */,
 				E1A8FF562569F359004D9B45 /* Pod.swift */,
 				E1A8FF4A2569F2AE004D9B45 /* City.swift */,
+				E1ED31E2256C1AC100572FA0 /* Cod.swift */,
 			);
 			path = OfferModel;
 			sourceTree = "<group>";
@@ -244,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A8FF5E2569F803004D9B45 /* NetworkManager.swift */,
+				E1ED31E5256C1F1700572FA0 /* Errors.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -484,6 +493,7 @@
 				E1A8FF5F2569F803004D9B45 /* NetworkManager.swift in Sources */,
 				E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */,
 				E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */,
+				E1ED31E6256C1F1700572FA0 /* Errors.swift in Sources */,
 				E1A8FF5A2569F375004D9B45 /* WeatherModel.swift in Sources */,
 				E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */,
 				E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */,
@@ -492,6 +502,7 @@
 				E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */,
 				E1A8FF542569F343004D9B45 /* Sys.swift in Sources */,
 				E18776A2256A8D7300285931 /* DetailTableViewCell.swift in Sources */,
+				E1ED31EE256C316100572FA0 /* StopStartDownloadAnimation.swift in Sources */,
 				E1F09A3925682BD100C438E0 /* MainInfoView.swift in Sources */,
 				E1A8FF572569F359004D9B45 /* Pod.swift in Sources */,
 				E1F09A262565B68900C438E0 /* CircleView.swift in Sources */,
@@ -503,6 +514,7 @@
 				E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */,
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
+				E1ED31E3256C1AC100572FA0 /* Cod.swift in Sources */,
 				E1F09A302566E31300C438E0 /* RingView.swift in Sources */,
 				E18776B7256AA62C00285931 /* TableViewViewModelType.swift in Sources */,
 				E1612BD225657C1B002B8397 /* SceneDelegate.swift in Sources */,

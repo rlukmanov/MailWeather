@@ -25,6 +25,13 @@ struct Constants {
         static let detailVC = "DetailTableViewController"
     }
     
+    struct Errors {
+        static let cityNotFound = "Unfortunately the city was not found. Check and try again"
+        static let networkBad = "Internet doesn't work. Check your connection and try again"
+        static let invalidApiKey = "Oops, invalid api key. The developer will fix it soon"
+        static let other = "Oh, some mistake. We'll fix it soon"
+    }
+    
     struct Other {
         static let countRows = 8
         static let resultListCount: Int = 7

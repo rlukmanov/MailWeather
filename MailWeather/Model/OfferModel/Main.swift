@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct Main: Codable {
+struct Main {
     let temp: Double // Temperature
     let humidity: Int // Humidity, %
+}
 
+extension Main: Codable {
     enum CodingKeys: String, CodingKey {
         case temp
         case humidity

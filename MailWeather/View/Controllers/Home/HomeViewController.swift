@@ -27,7 +27,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
-
+    @IBOutlet weak var errorLabel: UILabel!
+    
     private var blurEffectView: UIVisualEffectView?
     private var isFirstAppear = true
     var viewModel = ViewModel()
@@ -42,6 +43,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.delegate = self
         searchBar.delegate = self
         configureDropButton()
         bind()
@@ -51,7 +53,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if isFirstAppear {
-            startDownloadAnimation()
             appearAnimations()
             isFirstAppear = false
         }
@@ -62,7 +63,6 @@ class HomeViewController: UIViewController {
     private func bind() {
         viewModel.temperatuture.bind { [unowned self] in
             self.temperatureLabel.text = $0
-            stopDownloadAnimation()
         }
         
         viewModel.city.bind { [unowned self] in
@@ -71,6 +71,10 @@ class HomeViewController: UIViewController {
         
         viewModel.image.bind { [unowned self] in
             self.iconImageView.image = $0
+        }
+        
+        viewModel.errorDescription.bind { [unowned self] in
+            self.errorLabel.text = $0
         }
     }
     
@@ -90,7 +94,6 @@ class HomeViewController: UIViewController {
         dropButton.dismissMode = .automatic
         
         dropButton.selectionAction = { [unowned self] (index: Int, item: String) in
-            startDownloadAnimation()
             viewModel.loadData(city: item)
             searchBar.text = nil
             view.endEditing(true)
@@ -117,20 +120,6 @@ class HomeViewController: UIViewController {
         rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
     }
     
-    func startDownloadAnimation() {
-        internalDownloadRingView.startDownloadAnimation()
-        externalDownloadRingView.startDownloadAnimation()
-        mainInfoView.startDownloadAnimation()
-        openDetailVCButton.isEnabled = false
-    }
-    
-    func stopDownloadAnimation() {
-        internalDownloadRingView.stopDownloadAnimation()
-        externalDownloadRingView.stopDownloadAnimation()
-        mainInfoView.stopDownloadAnimation()
-        openDetailVCButton.isEnabled = true
-    }
-    
     func startSearchBlur() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterialDark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -151,14 +140,35 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - StopStartDownloadAnimation
+
+extension HomeViewController: StopStartDownloadAnimation {
+    
+    func startDownloadAnimation() {
+        internalDownloadRingView.startDownloadAnimation()
+        externalDownloadRingView.startDownloadAnimation()
+        mainInfoView.startDownloadAnimation()
+        openDetailVCButton.isEnabled = false
+    }
+    
+    func stopDownloadAnimation() {
+        internalDownloadRingView.stopDownloadAnimation()
+        externalDownloadRingView.stopDownloadAnimation()
+        mainInfoView.stopDownloadAnimation()
+        openDetailVCButton.isEnabled = true
+    }
+}
+
 // MARK: - UISearchBarDelegate
 
 extension HomeViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        startDownloadAnimation()
-        viewModel.loadData(city: searchBar.text ?? "")
+        guard let city = searchBar.text else { return }
+
+        viewModel.loadData(city: city)
         searchBar.text = nil
+        dropButton.hide()
         view.endEditing(true)
     }
     

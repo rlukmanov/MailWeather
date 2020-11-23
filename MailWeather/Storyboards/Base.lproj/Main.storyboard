@@ -105,6 +105,12 @@
                                 <rect key="frame" x="32" y="229" width="350" height="350"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwV-py-uaT">
+                                <rect key="frame" x="18" y="597" width="378" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96078431372549022" green="0.35686274509803922" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-j2-0xE" customClass="MainInfoView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="86" y="283" width="242" height="242"/>
                                 <subviews>
@@ -174,12 +180,13 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.31764705882352939" green="0.80000000000000004" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.76470588235294112" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ehI-1F-ZId" secondAttribute="trailing" constant="17" id="0Pm-u8-yLt"/>
                             <constraint firstItem="Zo7-Bz-7ew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="0e6-wA-Tqh"/>
                             <constraint firstItem="ehI-1F-ZId" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="2hz-7C-kix"/>
                             <constraint firstItem="52c-ZH-z6d" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="24" id="35I-CC-bF7"/>
+                            <constraint firstItem="TwV-py-uaT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-18" id="3tF-Al-fff"/>
                             <constraint firstItem="Okh-tp-nUp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="4KV-lu-oBw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JR3-fN-OaK" secondAttribute="trailing" id="4sm-f7-GFI"/>
                             <constraint firstItem="eSq-RC-cl5" firstAttribute="leading" secondItem="Okh-tp-nUp" secondAttribute="leading" id="4vt-1w-PQ3"/>
@@ -189,6 +196,8 @@
                             <constraint firstItem="eSq-RC-cl5" firstAttribute="bottom" secondItem="Okh-tp-nUp" secondAttribute="bottom" id="Aj2-oK-KT2"/>
                             <constraint firstItem="2wk-j2-0xE" firstAttribute="bottom" secondItem="Zo7-Bz-7ew" secondAttribute="bottom" id="Bh2-La-hDg"/>
                             <constraint firstItem="7Fy-TW-0rG" firstAttribute="bottom" secondItem="Okh-tp-nUp" secondAttribute="bottom" id="CSY-lh-TGf"/>
+                            <constraint firstItem="TwV-py-uaT" firstAttribute="top" secondItem="Okh-tp-nUp" secondAttribute="bottom" constant="18" id="ECI-WZ-3Vw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="TwV-py-uaT" secondAttribute="leading" constant="-18" id="EtF-uJ-dxT"/>
                             <constraint firstAttribute="bottom" secondItem="JR3-fN-OaK" secondAttribute="bottom" id="Ez1-81-3K2"/>
                             <constraint firstItem="Ey0-ea-w09" firstAttribute="trailing" secondItem="j6G-zV-KZ1" secondAttribute="trailing" id="I05-7g-gpN"/>
                             <constraint firstItem="2wk-j2-0xE" firstAttribute="leading" secondItem="Zo7-Bz-7ew" secondAttribute="leading" id="OwJ-Wd-FaX"/>
@@ -220,6 +229,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="JR3-fN-OaK" id="C6T-w1-MjR"/>
                         <outlet property="cityLabel" destination="Y2g-WM-PIm" id="w4x-pZ-whe"/>
+                        <outlet property="errorLabel" destination="TwV-py-uaT" id="hP8-TL-ymh"/>
                         <outlet property="externalDownloadRingView" destination="7Fy-TW-0rG" id="HRo-BP-NXu"/>
                         <outlet property="externalRingView" destination="Okh-tp-nUp" id="SVJ-KB-yD0"/>
                         <outlet property="iconImageView" destination="Oyx-Rb-g2E" id="zIx-f3-IeA"/>
@@ -247,7 +257,7 @@
                         <color key="backgroundColor" red="0.12156862745098039" green="0.80784313725490198" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.1201814637" green="0.80795615909999996" blue="0.96081393960000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="sectionIndexBackgroundColor" red="0.14901960784313725" green="0.76470588235294112" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="bbc-ne-4DS" customClass="DetailTableViewCell" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="119.5"/>

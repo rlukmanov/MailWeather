@@ -8,8 +8,7 @@
 import Foundation
 
 struct Response: Codable {
-    let cod: String
-    let message: Int
-    let list: [List]
-    let city: City
+    let cod: Cod
+    let list: [List]?
+    let city: City?
 }

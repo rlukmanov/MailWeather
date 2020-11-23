@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class ViewModel {
     
@@ -18,29 +19,39 @@ class ViewModel {
     var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
+    var errorDescription: Box<String?> = Box(nil)
     
     private var iconDetailList = [Box<UIImage?>]()
     private var weather: Weather?
     
+    weak var delegate: StopStartDownloadAnimation?
+    
     // MARK: - fetchRequest
     
     func loadData(city: String) {
+        errorDescription.value = nil
+        delegate?.startDownloadAnimation()
+        
         net.load(service: .showWeather(city: city), decodeType: Response.self, completion: { (result) in
             switch result {
             case .success(let response):
-                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                print(response.cod)
-                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 self.saveLoadedData(from: response)
             case .failure(let error):
-                //print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                print("??????????????????????????")
-                print(error.localizedDescription)
-                print("??????????????????????????")
-                //print(error)
-                break
+                
+                if let error = error as? AFError {
+                    switch error {
+                    
+                    case .sessionTaskFailed(error: _):
+                        self.errorDescription.value = Errors(code: -1).getDescriptionError()
+                        break
+                    default:
+                        break
+                    }
+                }
             }
         })
+        
+        delegate?.stopDownloadAnimation()
     }
     
     // MARK: - getFilterList
@@ -56,9 +67,14 @@ class ViewModel {
     // MARK: - saveLoadedData
     
     private func saveLoadedData(from response: Response) {
-        let city = response.city.name
-        let timezone = response.city.timezone
-        let listWeather = response.list
+        
+        guard let listWeather = response.list else {
+            errorDescription.value = Errors(code: response.cod.getCodValue()).getDescriptionError()
+            return
+        }
+        
+        let city = response.city!.name
+        let timezone = response.city?.timezone
         var resultWeatherList = [WeatherAtTime]()
         
         listWeather.forEach { item in
@@ -76,7 +92,7 @@ class ViewModel {
                                               humidity: item.main.humidity,
                                               precipitation: item.pop,
                                               icon: imageDetailImage,
-                                              timezone: timezone)
+                                              timezone: timezone!)
             
             resultWeatherList.append(weatherAtTime)
         }
