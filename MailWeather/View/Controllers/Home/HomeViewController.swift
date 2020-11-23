@@ -78,6 +78,7 @@ class HomeViewController: UIViewController {
         viewModel.isHiddenRefreshButton.bind { [unowned self] in
             self.refreshButton.isHidden = $0
             self.refreshButton.isEnabled = !$0
+            if !$0 { UIView.animate(withDuration: 1.0) { self.iconImageView.alpha = 1.0 } }
         }
     }
     
