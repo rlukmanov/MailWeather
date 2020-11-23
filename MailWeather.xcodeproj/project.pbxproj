@@ -39,6 +39,7 @@
 		E1ED31EE256C316100572FA0 /* StopStartDownloadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */; };
 		E1ED31F7256C4B8200572FA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */; };
 		E1ED31FC256C52BE00572FA0 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31FB256C52BE00572FA0 /* URLExtension.swift */; };
+		E1ED3243256C7F9F00572FA0 /* MailWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1ED3241256C7F9F00572FA0 /* MailWeather.xcdatamodeld */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
 		E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */; };
@@ -85,6 +86,7 @@
 		E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopStartDownloadAnimation.swift; sourceTree = "<group>"; };
 		E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E1ED31FB256C52BE00572FA0 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		E1ED3242256C7F9F00572FA0 /* MailWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MailWeather.xcdatamodel; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				E1612BD825657C1F002B8397 /* Assets.xcassets */,
+				E1ED3241256C7F9F00572FA0 /* MailWeather.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */,
 				E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */,
 				E1ED31E6256C1F1700572FA0 /* Errors.swift in Sources */,
+				E1ED3243256C7F9F00572FA0 /* MailWeather.xcdatamodeld in Sources */,
 				E1A8FF5A2569F375004D9B45 /* WeatherModel.swift in Sources */,
 				E1ED31F7256C4B8200572FA0 /* UIViewExtension.swift in Sources */,
 				E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */,
@@ -749,6 +753,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E1ED3241256C7F9F00572FA0 /* MailWeather.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E1ED3242256C7F9F00572FA0 /* MailWeather.xcdatamodel */,
+			);
+			currentVersion = E1ED3242256C7F9F00572FA0 /* MailWeather.xcdatamodel */;
+			path = MailWeather.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E1612BC425657C1B002B8397 /* Project object */;
 }

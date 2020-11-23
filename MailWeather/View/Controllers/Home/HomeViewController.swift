@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import DropDown
+import CoreData
 
 class HomeViewController: UIViewController {
     
@@ -34,7 +35,9 @@ class HomeViewController: UIViewController {
     private var isFirstAppear = true
     var viewModel = ViewModel()
     var dropButton = DropDown()
-
+    
+    var context: NSManagedObjectContext!
+    
     // MARK: - View Controller life cycle
     
     override func viewDidLoad() {
@@ -45,7 +48,7 @@ class HomeViewController: UIViewController {
         configureDropButton()
         bind()
         
-        viewModel.loadData(city: "New York")
+        viewModel.loadData(city: viewModel.previousCity)
     }
     
     override func viewDidAppear(_ animated: Bool) {

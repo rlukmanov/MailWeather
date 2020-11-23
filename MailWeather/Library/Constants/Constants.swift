@@ -9,6 +9,8 @@ import Foundation
 
 struct Constants {
     
+    static let NameProject = "MailWeather"
+    
     struct Api {
         static let url = "https://api.openweathermap.org"
         static let urlIcon = "https://openweathermap.org"

@@ -25,7 +25,6 @@ class ViewModel {
     var errorDescription: Box<String?> = Box(nil)
     var isHiddenRefreshButton: Box<Bool> = Box(true)
     
-    private var iconDetailList = [Box<UIImage?>]()
     private var weather: Weather?
     
     weak var delegate: StopStartDownloadAnimation?
