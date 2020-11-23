@@ -12,8 +12,8 @@ extension UIView {
     func fade(toAlpha alpha: CGFloat, withDuration duration: TimeInterval, completion: (() -> Void)? = nil) {
         UIView.animate(withDuration: duration, animations: {
             self.alpha = alpha
-        }, completion: { _ in
+        }) { _ in
             completion?()
-        })
+        }
     }
 }

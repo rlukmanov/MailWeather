@@ -12,6 +12,7 @@ import Alamofire
 class ViewModel {
     
     // MARK: - Properties
+    
     var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin"]
     var dataFiltered: [String] = []
     
@@ -78,7 +79,7 @@ class ViewModel {
         var resultWeatherList = [WeatherAtTime]()
         
         listWeather.forEach { item in
-            let url = convertImageURL(iconId: item.weather.first?.icon)
+            let url = URL(iconId: item.weather.first?.icon)
             let newIconImageView = UIImageView()
             let imageDetailImage: Box<UIImage?> = Box(nil)
             
@@ -97,24 +98,13 @@ class ViewModel {
             resultWeatherList.append(weatherAtTime)
         }
         
-        let url = convertImageURL(iconId: listWeather.first?.weather.first?.icon)
+        let url = URL(iconId: listWeather.first?.weather.first?.icon)
         let newIconImageView = UIImageView()
-        newIconImageView.load(url: url) {
-            self.image.value = newIconImageView.image
-        }
+        newIconImageView.load(url: url) { self.image.value = newIconImageView.image }
         
         self.city.value = city
         self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
         self.weather = Weather(city: city, list: resultWeatherList)
-    }
-    
-    private func convertImageURL(iconId: String?) -> URL? {
-        guard let iconId = iconId else { return nil }
-        
-        var stringURL = Constants.Api.urlIcon + "/" + Constants.Api.pathIcon
-        stringURL += iconId
-        stringURL += Constants.Api.formatIcon
-        return URL(string: stringURL)
     }
 }
 

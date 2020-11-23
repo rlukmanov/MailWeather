@@ -72,13 +72,4 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     private func convertPrecipitation(value: Double) -> String {
         return String(Int(round(value * 100)))
     }
-    
-    private func convertImageURL(iconId: String?) -> URL? {
-        guard let iconId = iconId else { return nil }
-        
-        var stringURL = Constants.Api.urlIcon + "/" + Constants.Api.pathIcon
-        stringURL += iconId
-        stringURL += Constants.Api.formatIcon
-        return URL(string: stringURL)
-    }
 }
