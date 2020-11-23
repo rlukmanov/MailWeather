@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var refreshButton: UIButton!
     
     private var blurEffectView: UIVisualEffectView?
     private var isFirstAppear = true
@@ -73,6 +74,11 @@ class HomeViewController: UIViewController {
         viewModel.errorDescription.bind { [unowned self] in
             self.errorLabel.text = $0
         }
+        
+        viewModel.isHiddenRefreshButton.bind { [unowned self] in
+            self.refreshButton.isHidden = $0
+            self.refreshButton.isEnabled = !$0
+        }
     }
     
     // MARK: - configureDropButton
@@ -106,6 +112,10 @@ class HomeViewController: UIViewController {
         newViewController.viewModel = viewModel
 
         self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+        viewModel.loadData(city: viewModel.previousCity)
     }
     
     // MARK: - Animations

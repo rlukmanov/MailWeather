@@ -112,12 +112,6 @@
                                     <constraint firstAttribute="width" constant="100" id="uQh-vN-Huh" userLabel="width = 100"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwV-py-uaT">
-                                <rect key="frame" x="18" y="597" width="378" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96078431372549022" green="0.35686274509803922" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-j2-0xE" customClass="MainInfoView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="86" y="283" width="242" height="242"/>
                                 <subviews>
@@ -141,9 +135,32 @@
                                     <constraint firstItem="ddR-4b-TrT" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="45" id="ieb-pX-6Ks"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwV-py-uaT">
+                                <rect key="frame" x="18" y="597" width="378" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" red="0.96078431372549022" green="0.35686274509803922" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JR3-fN-OaK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q45-9c-gCN">
+                                        <rect key="frame" x="167" y="597" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="2dR-mG-I90"/>
+                                            <constraint firstAttribute="height" constant="80" id="l9a-oL-mdD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="arrow.clockwise.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tl3-cg-YdB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Q45-9c-gCN" firstAttribute="centerX" secondItem="JR3-fN-OaK" secondAttribute="centerX" id="kLW-6S-Jmc"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSq-RC-cl5">
                                 <rect key="frame" x="32" y="229" width="350" height="350"/>
@@ -206,6 +223,7 @@
                             <constraint firstItem="Ey0-ea-w09" firstAttribute="bottom" secondItem="j6G-zV-KZ1" secondAttribute="bottom" id="ZPO-8Z-bw6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Okh-tp-nUp" secondAttribute="trailing" constant="32" id="ZRy-Eb-2ah"/>
                             <constraint firstItem="Ey0-ea-w09" firstAttribute="top" secondItem="j6G-zV-KZ1" secondAttribute="top" id="ase-bk-xg6"/>
+                            <constraint firstItem="Q45-9c-gCN" firstAttribute="top" secondItem="TwV-py-uaT" secondAttribute="bottom" id="bMk-Dn-LK1"/>
                             <constraint firstItem="JR3-fN-OaK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bUc-OS-9h0"/>
                             <constraint firstItem="JR3-fN-OaK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bcU-d0-KFT"/>
                             <constraint firstItem="7Fy-TW-0rG" firstAttribute="trailing" secondItem="Okh-tp-nUp" secondAttribute="trailing" id="cac-kD-eeT"/>
@@ -238,6 +256,7 @@
                         <outlet property="leftGroundView" destination="52c-ZH-z6d" id="gUq-XC-dGT"/>
                         <outlet property="mainInfoView" destination="2wk-j2-0xE" id="sTc-EI-NMZ"/>
                         <outlet property="openDetailVCButton" destination="eSq-RC-cl5" id="57S-Lz-ocJ"/>
+                        <outlet property="refreshButton" destination="Q45-9c-gCN" id="9JY-xe-OBN"/>
                         <outlet property="rightGroundView" destination="PW1-i2-uoZ" id="oos-Vf-Yl6"/>
                         <outlet property="searchBar" destination="ehI-1F-ZId" id="h66-Y1-lLP"/>
                         <outlet property="temperatureLabel" destination="ddR-4b-TrT" id="4nu-Oc-o60"/>
@@ -366,6 +385,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="arrow.clockwise.circle.fill" catalog="system" width="128" height="121"/>
         <image name="tempIconDay" width="75" height="75"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

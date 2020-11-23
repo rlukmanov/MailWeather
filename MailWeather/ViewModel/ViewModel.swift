@@ -15,12 +15,15 @@ class ViewModel {
     
     var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin"]
     var dataFiltered: [String] = []
+    var previousCity: String = "Moscow"
     
     private let net = NetworkManager<ForeCastProvider>()
+    
     var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
     var errorDescription: Box<String?> = Box(nil)
+    var isHiddenRefreshButton: Box<Bool> = Box(true)
     
     private var iconDetailList = [Box<UIImage?>]()
     private var weather: Weather?
@@ -31,7 +34,9 @@ class ViewModel {
     
     func loadData(city: String) {
         errorDescription.value = nil
+        isHiddenRefreshButton.value = true
         delegate?.startDownloadAnimation()
+        previousCity = city
         
         net.load(service: .showWeather(city: city), decodeType: Response.self, completion: { (result) in
             switch result {
@@ -45,6 +50,7 @@ class ViewModel {
                     
                     case .sessionTaskFailed(error: _):
                         self.errorDescription.value = Errors(code: -1).getDescriptionError()
+                        self.isHiddenRefreshButton.value = false
                     default:
                         break
                     }
