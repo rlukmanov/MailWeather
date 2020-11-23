@@ -294,8 +294,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-33" translatesAutoresizingMaskIntoConstraints="NO" id="7zX-mR-u3c">
-                                                    <rect key="frame" x="10" y="0.0" width="100" height="119.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-25" translatesAutoresizingMaskIntoConstraints="NO" id="7zX-mR-u3c">
+                                                    <rect key="frame" x="10" y="-10" width="100" height="129.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempIconDay" translatesAutoresizingMaskIntoConstraints="NO" id="YPZ-wR-aGg">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -305,7 +305,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пасмурно" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLZ-iM-ZNc">
-                                                            <rect key="frame" x="11.5" y="67" width="77.5" height="52.5"/>
+                                                            <rect key="frame" x="11.5" y="75" width="77.5" height="54.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -328,7 +328,7 @@
                                                 <constraint firstItem="WMp-6R-n9Q" firstAttribute="leading" secondItem="fcG-VO-vIF" secondAttribute="leading" id="i8e-fp-13X"/>
                                                 <constraint firstItem="7zX-mR-u3c" firstAttribute="leading" secondItem="WUp-Pg-8Y7" secondAttribute="leading" constant="10" id="sCn-Yk-rPr"/>
                                                 <constraint firstAttribute="bottom" secondItem="WMp-6R-n9Q" secondAttribute="bottom" constant="14" id="v7w-OE-amb"/>
-                                                <constraint firstItem="7zX-mR-u3c" firstAttribute="top" secondItem="WUp-Pg-8Y7" secondAttribute="top" id="yDF-lw-yDN"/>
+                                                <constraint firstItem="7zX-mR-u3c" firstAttribute="top" secondItem="WUp-Pg-8Y7" secondAttribute="top" constant="-10" id="yDF-lw-yDN"/>
                                             </constraints>
                                         </view>
                                     </subviews>
