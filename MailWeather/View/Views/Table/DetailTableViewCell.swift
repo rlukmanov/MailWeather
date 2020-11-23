@@ -16,7 +16,7 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var precipitationLabel: UILabel!
     
-    weak var viewModel: TableViewCellViewModelType? {
+    weak var viewModel: TableViewCellViewModel? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             
@@ -25,7 +25,10 @@ class DetailTableViewCell: UITableViewCell {
             temperatureLabel.text = viewModel.temperature
             humidityLabel.text = viewModel.humidity
             precipitationLabel.text = viewModel.precipitation
-            iconWeatherImageView.image = viewModel.iconImage
+            
+            viewModel.loadImage.bind(listener: { [unowned self] in
+                self.iconWeatherImageView.image = $0
+            })
         }
     }
 }

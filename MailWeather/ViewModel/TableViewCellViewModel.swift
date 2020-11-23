@@ -34,16 +34,18 @@ class TableViewCellViewModel: TableViewCellViewModelType {
         return "Осадки\n" + convertPrecipitation(value: weatherAtTime.precipitation) + "%"
     }
     
-    var iconImage: UIImage {
-        return weatherAtTime.icon
-    }
-    
-    private var loadImage: UIImage?
+    var loadImage: Box<UIImage?> = Box(nil)
     
     // MARK: - Init
     
     init(weatherAtTime: WeatherAtTime) {
         self.weatherAtTime = weatherAtTime
+        
+        let url = convertImageURL(iconId: weatherAtTime.icon)
+        let newIconImageView = UIImageView()
+        newIconImageView.load(url: url) {
+            self.loadImage.value = newIconImageView.image
+        }
     }
     
     // MARK: - Convert

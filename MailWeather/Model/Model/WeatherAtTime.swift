@@ -14,6 +14,6 @@ struct WeatherAtTime {
     var weatherDescription: String
     var humidity: Int
     var precipitation: Double
-    var icon: UIImage
+    var icon: String
     var timezone: Int
 }

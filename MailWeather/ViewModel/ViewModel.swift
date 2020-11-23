@@ -44,18 +44,12 @@ class ViewModel {
         let maxIndex = Constants.Other.countRows < listWeather.count ? Constants.Other.countRows : listWeather.count
         
         listWeather[startIndex..<maxIndex].forEach { item in
-            let url = convertImageURL(iconId: item.weather.first?.icon)
-            let newIconImageView = UIImageView()
-            newIconImageView.load(url: url) {
-                
-            }
-            
             let weatherAtTime = WeatherAtTime(dt: item.dt,
                                               temperature: item.main.temp,
                                               weatherDescription: item.weather.first?.weatherDescription ?? "",
                                               humidity: item.main.humidity,
                                               precipitation: item.pop,
-                                              icon: newIconImageView.image ?? UIImage(),
+                                              icon: item.weather.first?.icon ?? "",
                                               timezone: timezone)
             
             resultWeatherList.append(weatherAtTime)
@@ -94,7 +88,7 @@ extension ViewModel: TableViewViewModelType {
         return weather?.list.count ?? 0
     }
     
-    func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModelType? {
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModel? {
         let weatherAtCell = (weather?.list[indexPath.row])!
         return TableViewCellViewModel(weatherAtTime: weatherAtCell)
     }
