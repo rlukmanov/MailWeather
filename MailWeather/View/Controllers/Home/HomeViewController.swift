@@ -54,26 +54,26 @@ class HomeViewController: UIViewController {
         
         // ----------------
         dataFiltered = data
-
-        dropButton.anchorView = searchBar
-        dropButton.bottomOffset = CGPoint(x: 6, y: (dropButton.anchorView?.plainView.bounds.height)!)
-        dropButton.backgroundColor = .clear
-        dropButton.dimmedBackgroundColor = .clear
-        dropButton.selectionBackgroundColor = .clear
-        dropButton.selectedTextColor = .lightGray
-        dropButton.shadowColor = .clear
-        
-        dropButton.direction = .bottom
-        dropButton.textColor = .white
-        dropButton.dismissMode = .automatic
-        dropButton.selectionAction = { [unowned self] (index: Int, item: String) in
-            startDownloadAnimation()
-            viewModel.loadData(city: searchBar.text ?? "")
-            searchBar.text = nil
-            view.endEditing(true)
-        }
+        configureDropButton()
         // ----------------
         
+        bind()
+        searchBar.delegate = self
+        
+        startDownloadAnimation()
+        viewModel.loadData(city: "Moscow")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if firstLoad {
+            appearAnimations()
+            firstLoad = false
+        }
+    }
+    
+    // MARK: - bind
+    
+    private func bind() {
         viewModel.temperatuture.bind { [unowned self] in
             self.temperatureLabel.text = $0
             stopDownloadAnimation()
@@ -86,17 +86,28 @@ class HomeViewController: UIViewController {
         viewModel.image.bind { [unowned self] in
             self.iconImageView.image = $0
         }
-        
-        searchBar.delegate = self
-        
-        startDownloadAnimation()
-        viewModel.loadData(city: "Moscow")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if firstLoad {
-            appearAnimations()
-            firstLoad = false
+    // MARK: - configureDropButton
+    
+    private func configureDropButton() {
+        dropButton.anchorView = searchBar
+        dropButton.bottomOffset = CGPoint(x: 6, y: (dropButton.anchorView?.plainView.bounds.height)!)
+        dropButton.backgroundColor = .clear
+        dropButton.dimmedBackgroundColor = .clear
+        dropButton.selectionBackgroundColor = .clear
+        dropButton.selectedTextColor = .lightGray
+        dropButton.shadowColor = .clear
+        
+        dropButton.direction = .bottom
+        dropButton.textColor = .white
+        dropButton.dismissMode = .automatic
+        
+        dropButton.selectionAction = { [unowned self] (index: Int, item: String) in
+            startDownloadAnimation()
+            viewModel.loadData(city: searchBar.text ?? "")
+            searchBar.text = nil
+            view.endEditing(true)
         }
     }
     
@@ -159,7 +170,6 @@ extension HomeViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
     
-    // ---------------------------
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
             dat.range(of: searchText, options: .caseInsensitive) != nil
@@ -174,7 +184,7 @@ extension HomeViewController: UISearchBarDelegate {
         startSearchBlur()
         
         searchBar.setShowsCancelButton(true, animated: true)
-        for ob: UIView in ((searchBar.subviews[0] )).subviews {
+        for ob: UIView in ((searchBar.subviews[0])).subviews {
             if let z = ob as? UIButton {
                 let btn: UIButton = z
                 btn.setTitleColor(UIColor.white, for: .normal)
@@ -191,6 +201,7 @@ extension HomeViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         dataFiltered = data
+        openDetailVCButton.isEnabled = true
         dropButton.hide()
     }
 }

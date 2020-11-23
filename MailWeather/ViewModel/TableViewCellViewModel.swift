@@ -33,11 +33,11 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     var humidity: String {
-        return "Влажность\n" + String(describing: weatherAtTime.humidity) + "%"
+        return "Humidity\n" + String(describing: weatherAtTime.humidity) + "%"
     }
     
     var precipitation: String {
-        return "Осадки\n" + convertPrecipitation(value: weatherAtTime.precipitation) + "%"
+        return "Precipitation\n" + convertPrecipitation(value: weatherAtTime.precipitation) + "%"
     }
     
     var loadImage: Box<UIImage?> = Box(nil)
