@@ -46,12 +46,7 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     
     init(weatherAtTime: WeatherAtTime) {
         self.weatherAtTime = weatherAtTime
-        
-        let url = convertImageURL(iconId: weatherAtTime.icon)
-        let newIconImageView = UIImageView()
-        newIconImageView.load(url: url) {
-            self.loadImage.value = newIconImageView.image
-        }
+        self.loadImage = weatherAtTime.icon
     }
     
     // MARK: - Convert

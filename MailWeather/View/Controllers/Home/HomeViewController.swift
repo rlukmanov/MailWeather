@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
 
-    private var firstLoad = true
     private var blurEffectView: UIVisualEffectView?
+    private var isFirstAppear = true
     var viewModel = ViewModel()
     var dropButton = DropDown()
     
@@ -42,19 +42,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureDropButton()
-        
-        bind()
         searchBar.delegate = self
+        configureDropButton()
+        bind()
         
         startDownloadAnimation()
         viewModel.loadData(city: "New York")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if firstLoad {
+        if isFirstAppear {
             appearAnimations()
-            firstLoad = false
+            isFirstAppear = false
         }
     }
     
@@ -143,6 +142,12 @@ class HomeViewController: UIViewController {
     
     func endSearchBlur() {
         blurEffectView?.removeFromSuperview()
+    }
+    
+    private func function(withDelay delay: TimeInterval, completion: @escaping ()->Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            completion()
+        })
     }
 }
 

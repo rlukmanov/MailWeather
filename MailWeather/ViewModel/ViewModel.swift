@@ -19,6 +19,7 @@ class ViewModel {
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
     
+    private var iconDetailList = [Box<UIImage?>]()
     private var weather: Weather?
     
     // MARK: - fetchRequest
@@ -56,12 +57,20 @@ class ViewModel {
         let maxIndex = Constants.Other.countRows < listWeather.count ? Constants.Other.countRows : listWeather.count
         
         listWeather[startIndex..<maxIndex].forEach { item in
+            let url = convertImageURL(iconId: item.weather.first?.icon)
+            let newIconImageView = UIImageView()
+            let imageDetailImage: Box<UIImage?> = Box(nil)
+            
+            newIconImageView.load(url: url) {
+                imageDetailImage.value = newIconImageView.image
+            }
+            
             let weatherAtTime = WeatherAtTime(dt: item.dt,
                                               temperature: item.main.temp,
                                               weatherDescription: item.weather.first?.weatherDescription ?? "",
                                               humidity: item.main.humidity,
                                               precipitation: item.pop,
-                                              icon: item.weather.first?.icon ?? "",
+                                              icon: imageDetailImage,
                                               timezone: timezone)
             
             resultWeatherList.append(weatherAtTime)
