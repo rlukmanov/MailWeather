@@ -226,6 +226,7 @@
                         <outlet property="mainInfoView" destination="2wk-j2-0xE" id="sTc-EI-NMZ"/>
                         <outlet property="openDetailVCButton" destination="eSq-RC-cl5" id="57S-Lz-ocJ"/>
                         <outlet property="rightGroundView" destination="PW1-i2-uoZ" id="oos-Vf-Yl6"/>
+                        <outlet property="searchBar" destination="ehI-1F-ZId" id="h66-Y1-lLP"/>
                         <outlet property="temperatureLabel" destination="ddR-4b-TrT" id="4nu-Oc-o60"/>
                     </connections>
                 </viewController>

@@ -21,8 +21,8 @@ class ViewModel {
     
     // MARK: - fetchRequest
     
-    func loadData() {
-        net.load(service: .showWeather(city: "Moscow"), decodeType: Response.self, completion: { (result) in
+    func loadData(city: String) {
+        net.load(service: .showWeather(city: city), decodeType: Response.self, completion: { (result) in
             switch result {
             case .success(let response):
                 self.saveLoadedData(from: response)
@@ -90,6 +90,7 @@ extension ViewModel: TableViewViewModelType {
     
     func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModel? {
         let weatherAtCell = (weather?.list[indexPath.row])!
+
         return TableViewCellViewModel(weatherAtTime: weatherAtCell)
     }
 }

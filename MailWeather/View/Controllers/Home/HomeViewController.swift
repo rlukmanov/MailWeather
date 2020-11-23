@@ -20,11 +20,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var leftGroundView: CircleView!
     @IBOutlet weak var rightGroundView: CircleView!
     
+    @IBOutlet weak var searchBar: CustomSearchBar!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
     
+    private var firstLoad = true
     var viewModel = ViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -33,7 +35,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func startDownloadAnimation(_ sender: Any) {
         startDownloadAnimation()
-        viewModel.loadData()
+        viewModel.loadData(city: "Moscow")
     }
 
     // MARK: - View Controller life cycle
@@ -54,12 +56,17 @@ class HomeViewController: UIViewController {
             self.iconImageView.image = $0
         }
         
+        searchBar.delegate = self
+        
         startDownloadAnimation()
-        viewModel.loadData()
+        viewModel.loadData(city: "Moscow")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        appearAnimations()
+        if firstLoad {
+            appearAnimations()
+            firstLoad = false
+        }
     }
     
     // MARK: - Actions
@@ -94,5 +101,16 @@ class HomeViewController: UIViewController {
         externalDownloadRingView.stopDownloadAnimation()
         mainInfoView.stopDownloadAnimation()
         openDetailVCButton.isEnabled = true
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        startDownloadAnimation()
+        viewModel.loadData(city: searchBar.text ?? "")
+        self.view.endEditing(true)
     }
 }
