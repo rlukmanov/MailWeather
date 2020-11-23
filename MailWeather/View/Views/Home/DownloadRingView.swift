@@ -25,7 +25,7 @@ class DownloadRingView: UIView {
         }
     }
     
-    private var endColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5) {
+    private var endColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) {
         didSet {
             setNeedsDisplay(bounds)
         }

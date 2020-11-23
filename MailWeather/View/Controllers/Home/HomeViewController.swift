@@ -33,10 +33,6 @@ class HomeViewController: UIViewController {
     private var isFirstAppear = true
     var viewModel = ViewModel()
     var dropButton = DropDown()
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     // MARK: - View Controller life cycle
     

@@ -36,6 +36,7 @@ class ViewModel {
             switch result {
             case .success(let response):
                 self.saveLoadedData(from: response)
+                self.delegate?.stopDownloadAnimation()
             case .failure(let error):
                 
                 if let error = error as? AFError {
@@ -43,15 +44,14 @@ class ViewModel {
                     
                     case .sessionTaskFailed(error: _):
                         self.errorDescription.value = Errors(code: -1).getDescriptionError()
-                        break
                     default:
                         break
                     }
+                    
+                    self.delegate?.stopDownloadAnimation()
                 }
             }
         })
-        
-        delegate?.stopDownloadAnimation()
     }
     
     // MARK: - getFilterList
