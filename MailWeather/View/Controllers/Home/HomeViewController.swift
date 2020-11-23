@@ -11,12 +11,6 @@ import DropDown
 
 class HomeViewController: UIViewController {
     
-    // ------------------
-    var data: [String] = ["Moscow","London","New York","Los Angeles", "Berlin"]
-    var dataFiltered: [String] = []
-    var dropButton = DropDown()
-    // ------------------
-    
     // MARK: - Properties
     
     @IBOutlet weak var internalRingView: RingView!
@@ -33,10 +27,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var openDetailVCButton: UIButton!
-    
+
     private var firstLoad = true
     private var blurEffectView: UIVisualEffectView?
     var viewModel = ViewModel()
+    var dropButton = DropDown()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -47,10 +42,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ----------------
-        dataFiltered = data
         configureDropButton()
-        // ----------------
         
         bind()
         searchBar.delegate = self
@@ -166,25 +158,14 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
-            dat.range(of: searchText, options: .caseInsensitive) != nil
-        })
-        
-        dropButton.dataSource = Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultListCount)))
+        dropButton.dataSource = viewModel.getFilterList(searchText: searchText)
         dropButton.show()
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         openDetailVCButton.isEnabled = false
         startSearchBlur()
-        
         searchBar.setShowsCancelButton(true, animated: true)
-        for ob: UIView in ((searchBar.subviews[0])).subviews {
-            if let z = ob as? UIButton {
-                let btn: UIButton = z
-                btn.setTitleColor(UIColor.white, for: .normal)
-            }
-        }
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -195,7 +176,6 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
-        dataFiltered = data
         openDetailVCButton.isEnabled = true
         dropButton.hide()
     }

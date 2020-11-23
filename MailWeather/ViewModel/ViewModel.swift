@@ -11,6 +11,8 @@ import UIKit
 class ViewModel {
     
     // MARK: - Properties
+    var data: [String] = ["Moscow","London","New York","Los Angeles", "Berlin"]
+    var dataFiltered: [String] = []
     
     private let net = NetworkManager<ForeCastProvider>()
     var temperatuture: Box<String?> = Box(nil)
@@ -30,6 +32,16 @@ class ViewModel {
                 print(error)
             }
         })
+    }
+    
+    // MARK: - getFilterList
+    
+    func getFilterList(searchText: String) -> [String] {
+        dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
+            dat.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        
+        return Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultListCount)))
     }
     
     // MARK: - saveLoadedData
