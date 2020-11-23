@@ -166,9 +166,7 @@ extension HomeViewController: StopStartDownloadAnimation {
 extension HomeViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let city = searchBar.text else { return }
-
-        viewModel.loadData(city: city)
+        viewModel.loadData(city: searchBar.text)
         searchBar.text = nil
         dropButton.hide()
         view.endEditing(true)

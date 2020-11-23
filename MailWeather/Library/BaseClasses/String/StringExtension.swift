@@ -16,4 +16,10 @@ extension String {
     mutating func capitalizeFirstLetter() {
       self = self.capitalizingFirstLetter()
     }
+    
+    func trim() -> String {
+        let stringWithoutSpacesAtEnd = self.trimmingCharacters(in: .whitespaces)
+        let substrSpaces = stringWithoutSpacesAtEnd.components(separatedBy: .whitespaces)
+        return substrSpaces.filter { !$0.isEmpty }.joined(separator: " ")
+    }
 }

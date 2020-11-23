@@ -32,7 +32,11 @@ class ViewModel {
     
     // MARK: - fetchRequest
     
-    func loadData(city: String) {
+    func loadData(city: String?) {
+        guard var city = city else { return }
+        city = city.trim()
+        guard city.count > 0 else { return }
+        
         errorDescription.value = nil
         isHiddenRefreshButton.value = true
         delegate?.startDownloadAnimation()
