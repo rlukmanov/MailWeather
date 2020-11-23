@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.4.0)
+  - DropDown (2.3.13)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - DropDown (= 2.3.13)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
 
-PODFILE CHECKSUM: 9d5604c41827944ce80be993368057487d5596ca
+PODFILE CHECKSUM: 24691c17ca7f6c78dae494634609421a8d437ba4
 
 COCOAPODS: 1.9.3

@@ -8,5 +8,6 @@ target 'MailWeather' do
   # Pods for MailWeather
 
   pod 'Alamofire', '~> 5.2'
+  pod 'DropDown', '2.3.13'
 
 end

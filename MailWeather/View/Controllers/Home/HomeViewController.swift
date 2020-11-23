@@ -7,8 +7,15 @@
 
 import UIKit
 import Alamofire
+import DropDown
 
 class HomeViewController: UIViewController {
+    
+    // ------------------
+    var data: [String] = ["Москва","Лондон","Нью-йорк","Лос-Анджелес", "New-York"]
+    var dataFiltered: [String] = []
+    var dropButton = DropDown()
+    // ------------------
     
     // MARK: - Properties
     
@@ -19,6 +26,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mainInfoView: MainInfoView!
     @IBOutlet weak var leftGroundView: CircleView!
     @IBOutlet weak var rightGroundView: CircleView!
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var searchBar: CustomSearchBar!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -27,6 +35,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var openDetailVCButton: UIButton!
     
     private var firstLoad = true
+    private var blurEffectView: UIVisualEffectView?
     var viewModel = ViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -42,6 +51,28 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ----------------
+        dataFiltered = data
+
+        dropButton.anchorView = searchBar
+        dropButton.bottomOffset = CGPoint(x: 6, y: (dropButton.anchorView?.plainView.bounds.height)!)
+        dropButton.backgroundColor = .clear
+        dropButton.dimmedBackgroundColor = .clear
+        dropButton.selectionBackgroundColor = .clear
+        dropButton.selectedTextColor = .lightGray
+        dropButton.shadowColor = .clear
+        
+        dropButton.direction = .bottom
+        dropButton.textColor = .white
+        dropButton.dismissMode = .automatic
+        dropButton.selectionAction = { [unowned self] (index: Int, item: String) in
+            startDownloadAnimation()
+            viewModel.loadData(city: searchBar.text ?? "")
+            searchBar.text = nil
+            view.endEditing(true)
+        }
+        // ----------------
         
         viewModel.temperatuture.bind { [unowned self] in
             self.temperatureLabel.text = $0
@@ -102,6 +133,19 @@ class HomeViewController: UIViewController {
         mainInfoView.stopDownloadAnimation()
         openDetailVCButton.isEnabled = true
     }
+    
+    func startSearchBlur() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.blurEffectView = blurEffectView
+        backgroundView.addSubview(blurEffectView)
+    }
+    
+    func endSearchBlur() {
+        blurEffectView?.removeFromSuperview()
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -113,5 +157,40 @@ extension HomeViewController: UISearchBarDelegate {
         viewModel.loadData(city: searchBar.text ?? "")
         searchBar.text = nil
         view.endEditing(true)
+    }
+    
+    // ---------------------------
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
+            dat.range(of: searchText, options: .caseInsensitive) != nil
+        })
+
+        dropButton.dataSource = dataFiltered
+        dropButton.show()
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        openDetailVCButton.isEnabled = false
+        startSearchBlur()
+        
+        searchBar.setShowsCancelButton(true, animated: true)
+        for ob: UIView in ((searchBar.subviews[0] )).subviews {
+            if let z = ob as? UIButton {
+                let btn: UIButton = z
+                btn.setTitleColor(UIColor.white, for: .normal)
+            }
+        }
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        endSearchBlur()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        dataFiltered = data
+        dropButton.hide()
     }
 }

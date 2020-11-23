@@ -48,4 +48,16 @@ class CustomSearchBar: UISearchBar {
             }
         }
     }
+    
+    @IBInspectable
+    var textColorCancel: UIColor? {
+        didSet {
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: textColorCancel ?? .link,
+                .font: UIFont.systemFont(ofSize: 17)
+            ]
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+        }
+        
+    }
 }
