@@ -26,5 +26,6 @@ struct Constants {
     
     struct Other {
         static let countRows = 8
+        static let resultListCount: Int = 7
     }
 }

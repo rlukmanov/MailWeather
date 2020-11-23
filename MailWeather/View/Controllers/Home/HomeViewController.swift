@@ -12,7 +12,7 @@ import DropDown
 class HomeViewController: UIViewController {
     
     // ------------------
-    var data: [String] = ["Москва","Лондон","Нью-йорк","Лос-Анджелес", "New-York"]
+    var data: [String] = ["Moscow","London","New York","Los Angeles", "Berlin"]
     var dataFiltered: [String] = []
     var dropButton = DropDown()
     // ------------------
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
         searchBar.delegate = self
         
         startDownloadAnimation()
-        viewModel.loadData(city: "Moscow")
+        viewModel.loadData(city: "New York")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
         
         dropButton.selectionAction = { [unowned self] (index: Int, item: String) in
             startDownloadAnimation()
-            viewModel.loadData(city: searchBar.text ?? "")
+            viewModel.loadData(city: item)
             searchBar.text = nil
             view.endEditing(true)
         }
@@ -174,8 +174,8 @@ extension HomeViewController: UISearchBarDelegate {
         dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
             dat.range(of: searchText, options: .caseInsensitive) != nil
         })
-
-        dropButton.dataSource = dataFiltered
+        
+        dropButton.dataSource = Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultListCount)))
         dropButton.show()
     }
 

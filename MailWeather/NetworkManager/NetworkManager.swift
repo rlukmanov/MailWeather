@@ -52,7 +52,7 @@ enum ForeCastProvider: URLRequestBuilder {
     var parameters: Parameters? {
         switch self {
         case .showWeather(let city):
-            return ["q": String(describing: city),
+            return ["q": city,
                     "appid": Constants.Api.key,
                     "lang": Constants.Api.language]
         }
