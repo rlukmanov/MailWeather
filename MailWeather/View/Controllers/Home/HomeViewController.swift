@@ -41,11 +41,6 @@ class HomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    @IBAction func startDownloadAnimation(_ sender: Any) {
-        startDownloadAnimation()
-        viewModel.loadData(city: "Moscow")
-    }
 
     // MARK: - View Controller life cycle
     
