@@ -46,12 +46,12 @@ class HomeViewController: UIViewController {
         configureDropButton()
         bind()
         
-        startDownloadAnimation()
         viewModel.loadData(city: "New York")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if isFirstAppear {
+            startDownloadAnimation()
             appearAnimations()
             isFirstAppear = false
         }

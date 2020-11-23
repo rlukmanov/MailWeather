@@ -28,9 +28,17 @@ class ViewModel {
         net.load(service: .showWeather(city: city), decodeType: Response.self, completion: { (result) in
             switch result {
             case .success(let response):
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                print(response.cod)
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 self.saveLoadedData(from: response)
             case .failure(let error):
-                print(error)
+                //print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                print("??????????????????????????")
+                print(error.localizedDescription)
+                print("??????????????????????????")
+                //print(error)
+                break
             }
         })
     }
@@ -53,10 +61,7 @@ class ViewModel {
         let listWeather = response.list
         var resultWeatherList = [WeatherAtTime]()
         
-        let startIndex = listWeather.startIndex
-        let maxIndex = Constants.Other.countRows < listWeather.count ? Constants.Other.countRows : listWeather.count
-        
-        listWeather[startIndex..<maxIndex].forEach { item in
+        listWeather.forEach { item in
             let url = convertImageURL(iconId: item.weather.first?.icon)
             let newIconImageView = UIImageView()
             let imageDetailImage: Box<UIImage?> = Box(nil)
@@ -83,12 +88,8 @@ class ViewModel {
         }
         
         self.city.value = city
-        self.temperatuture.value = convertCelsius(fromTemperature: resultWeatherList.first?.temperature ?? 0)
+        self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
         self.weather = Weather(city: city, list: resultWeatherList)
-    }
-    
-    private func convertCelsius(fromTemperature temp: Double) -> String {
-        return String(describing: Int(temp - 273.15)) + "°"
     }
     
     private func convertImageURL(iconId: String?) -> URL? {

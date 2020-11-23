@@ -54,7 +54,9 @@ enum ForeCastProvider: URLRequestBuilder {
         case .showWeather(let city):
             return ["q": city,
                     "appid": Constants.Api.key,
-                    "lang": Constants.Api.language]
+                    "lang": Constants.Api.language,
+                    "cnt": Constants.Other.countRows,
+                    "units": Constants.Api.units]
         }
     }
     

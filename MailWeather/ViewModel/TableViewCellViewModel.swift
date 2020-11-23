@@ -19,7 +19,7 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     var temperature: String {
-        return convertCelsius(fromTemperature: weatherAtTime.temperature)
+        return String(describing: Int(weatherAtTime.temperature)) + "°"
     }
     
     var weatherDescription: String {
@@ -50,10 +50,6 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     // MARK: - Convert
-    
-    private func convertCelsius(fromTemperature temp: Double) -> String {
-        return String(describing: Int(temp - 273.15)) + "°"
-    }
     
     private func convertTime(time: Int, timeZone: Int) -> String {
         guard let timeZone = TimeZone(secondsFromGMT: timeZone) else { return "" }
