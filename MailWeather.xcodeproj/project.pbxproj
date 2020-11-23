@@ -24,7 +24,6 @@
 		E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */; };
 		E18776BF256AAC9500285931 /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */; };
 		E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */; };
-		E18776C8256ACA7800285931 /* StartStopDownloadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */; };
 		E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4A2569F2AE004D9B45 /* City.swift */; };
 		E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4D2569F2CC004D9B45 /* List.swift */; };
 		E1A8FF512569F321004D9B45 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF502569F321004D9B45 /* Main.swift */; };
@@ -66,7 +65,6 @@
 		E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelType.swift; sourceTree = "<group>"; };
 		E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
 		E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopDownloadAnimation.swift; sourceTree = "<group>"; };
 		E1A8FF4A2569F2AE004D9B45 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E1A8FF4D2569F2CC004D9B45 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E1A8FF502569F321004D9B45 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				E18776B6256AA62C00285931 /* TableViewViewModelType.swift */,
 				E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */,
-				E18776C7256ACA7800285931 /* StartStopDownloadAnimation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -506,7 +503,6 @@
 				E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */,
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
-				E18776C8256ACA7800285931 /* StartStopDownloadAnimation.swift in Sources */,
 				E1F09A302566E31300C438E0 /* RingView.swift in Sources */,
 				E18776B7256AA62C00285931 /* TableViewViewModelType.swift in Sources */,
 				E1612BD225657C1B002B8397 /* SceneDelegate.swift in Sources */,

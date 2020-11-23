@@ -256,14 +256,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="122.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempIconDay" translatesAutoresizingMaskIntoConstraints="NO" id="YPZ-wR-aGg">
-                                                    <rect key="frame" x="5" y="11.5" width="100" height="100"/>
+                                                    <rect key="frame" x="5" y="1.5" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="Ohi-vl-aTf"/>
                                                         <constraint firstAttribute="width" constant="100" id="gxD-XM-dOg"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пасмурно" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLZ-iM-ZNc">
-                                                    <rect key="frame" x="16" y="92.5" width="78" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пасмурно" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLZ-iM-ZNc">
+                                                    <rect key="frame" x="16.5" y="81.5" width="77.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -309,9 +309,9 @@
                                                 <constraint firstItem="dXN-ka-Omf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1sX-OJ-mwk" secondAttribute="trailing" constant="8" symbolic="YES" id="fsk-09-F8q"/>
                                                 <constraint firstItem="WMp-6R-n9Q" firstAttribute="leading" secondItem="fcG-VO-vIF" secondAttribute="leading" id="i8e-fp-13X"/>
                                                 <constraint firstItem="1sX-OJ-mwk" firstAttribute="top" secondItem="WUp-Pg-8Y7" secondAttribute="top" constant="43" id="kIr-Ti-Qx9"/>
-                                                <constraint firstItem="YPZ-wR-aGg" firstAttribute="centerY" secondItem="WUp-Pg-8Y7" secondAttribute="centerY" id="kky-bL-fss"/>
+                                                <constraint firstItem="YPZ-wR-aGg" firstAttribute="centerY" secondItem="WUp-Pg-8Y7" secondAttribute="centerY" constant="-10" id="kky-bL-fss"/>
+                                                <constraint firstItem="hLZ-iM-ZNc" firstAttribute="top" secondItem="YPZ-wR-aGg" secondAttribute="bottom" constant="-20" id="lQQ-RC-uZu"/>
                                                 <constraint firstItem="dXN-ka-Omf" firstAttribute="leading" secondItem="1sX-OJ-mwk" secondAttribute="trailing" constant="8" symbolic="YES" id="s0g-sy-RNK"/>
-                                                <constraint firstAttribute="bottom" secondItem="hLZ-iM-ZNc" secondAttribute="bottom" constant="10" id="svd-m9-sWR"/>
                                                 <constraint firstAttribute="bottom" secondItem="WMp-6R-n9Q" secondAttribute="bottom" constant="14" id="v7w-OE-amb"/>
                                             </constraints>
                                         </view>

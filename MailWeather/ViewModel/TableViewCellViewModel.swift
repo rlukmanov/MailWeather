@@ -23,7 +23,13 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     }
     
     var weatherDescription: String {
-        return weatherAtTime.weatherDescription.capitalizingFirstLetter()
+        let description = weatherAtTime.weatherDescription.capitalizingFirstLetter()
+        if description.components(separatedBy: " ").count > 1 {
+            let newDescription = description.replacingOccurrences(of: " ", with: "\n", options: .literal, range: nil)
+            return newDescription
+        }
+        
+        return description
     }
     
     var humidity: String {

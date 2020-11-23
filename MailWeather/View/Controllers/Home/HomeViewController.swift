@@ -81,11 +81,6 @@ class HomeViewController: UIViewController {
         leftGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
         rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
     }
-}
-
-// MARK: - StartStopDownloadAnimation
-
-extension HomeViewController: StartStopDownloadAnimation {
     
     func startDownloadAnimation() {
         internalDownloadRingView.startDownloadAnimation()
