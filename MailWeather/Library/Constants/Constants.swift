@@ -8,6 +8,7 @@
 import Foundation
 
 struct Constants {
+    
     struct Api {
         static let url = "https://api.openweathermap.org"
         static let urlIcon = "https://openweathermap.org"

@@ -58,6 +58,5 @@ class CustomSearchBar: UISearchBar {
             ]
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
         }
-        
     }
 }

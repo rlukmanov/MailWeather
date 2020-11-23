@@ -105,6 +105,13 @@
                                 <rect key="frame" x="32" y="229" width="350" height="350"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempIconDay" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-Rb-g2E">
+                                <rect key="frame" x="107" y="341" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="mBW-tA-76N" userLabel="height = 100"/>
+                                    <constraint firstAttribute="width" constant="100" id="uQh-vN-Huh" userLabel="width = 100"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwV-py-uaT">
                                 <rect key="frame" x="18" y="597" width="378" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -114,13 +121,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-j2-0xE" customClass="MainInfoView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="86" y="283" width="242" height="242"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempIconDay" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-Rb-g2E">
-                                        <rect key="frame" x="26" y="63" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="mBW-tA-76N" userLabel="height = 100"/>
-                                            <constraint firstAttribute="width" constant="100" id="uQh-vN-Huh" userLabel="width = 100"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Москва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2g-WM-PIm">
                                         <rect key="frame" x="86" y="155" width="70" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -136,11 +136,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Y2g-WM-PIm" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" id="Dzb-IS-Zlb"/>
-                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="trailing" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="5" id="GyH-3a-kaI"/>
                                     <constraint firstItem="Y2g-WM-PIm" firstAttribute="top" secondItem="ddR-4b-TrT" secondAttribute="bottom" constant="5" id="Tru-3K-oru"/>
                                     <constraint firstItem="ddR-4b-TrT" firstAttribute="bottom" secondItem="2wk-j2-0xE" secondAttribute="centerY" constant="29" id="emI-FY-oou"/>
                                     <constraint firstItem="ddR-4b-TrT" firstAttribute="centerX" secondItem="2wk-j2-0xE" secondAttribute="centerX" constant="45" id="ieb-pX-6Ks"/>
-                                    <constraint firstItem="Oyx-Rb-g2E" firstAttribute="centerY" secondItem="ddR-4b-TrT" secondAttribute="centerY" constant="5" id="nAg-f8-Nf1"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JR3-fN-OaK">
@@ -196,10 +194,12 @@
                             <constraint firstItem="eSq-RC-cl5" firstAttribute="bottom" secondItem="Okh-tp-nUp" secondAttribute="bottom" id="Aj2-oK-KT2"/>
                             <constraint firstItem="2wk-j2-0xE" firstAttribute="bottom" secondItem="Zo7-Bz-7ew" secondAttribute="bottom" id="Bh2-La-hDg"/>
                             <constraint firstItem="7Fy-TW-0rG" firstAttribute="bottom" secondItem="Okh-tp-nUp" secondAttribute="bottom" id="CSY-lh-TGf"/>
+                            <constraint firstItem="Oyx-Rb-g2E" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DkH-Yf-HSy"/>
                             <constraint firstItem="TwV-py-uaT" firstAttribute="top" secondItem="Okh-tp-nUp" secondAttribute="bottom" constant="18" id="ECI-WZ-3Vw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="TwV-py-uaT" secondAttribute="leading" constant="-18" id="EtF-uJ-dxT"/>
                             <constraint firstAttribute="bottom" secondItem="JR3-fN-OaK" secondAttribute="bottom" id="Ez1-81-3K2"/>
                             <constraint firstItem="Ey0-ea-w09" firstAttribute="trailing" secondItem="j6G-zV-KZ1" secondAttribute="trailing" id="I05-7g-gpN"/>
+                            <constraint firstItem="Oyx-Rb-g2E" firstAttribute="centerY" secondItem="ddR-4b-TrT" secondAttribute="centerY" id="L9A-r9-6OJ"/>
                             <constraint firstItem="2wk-j2-0xE" firstAttribute="leading" secondItem="Zo7-Bz-7ew" secondAttribute="leading" id="OwJ-Wd-FaX"/>
                             <constraint firstItem="2wk-j2-0xE" firstAttribute="top" secondItem="Zo7-Bz-7ew" secondAttribute="top" id="Tff-1p-x2R"/>
                             <constraint firstItem="j6G-zV-KZ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="59" id="VMg-uI-bHx"/>

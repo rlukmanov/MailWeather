@@ -12,7 +12,7 @@ import Alamofire
 class ViewModel {
     
     // MARK: - Properties
-    var data: [String] = ["Moscow","London","New York","Los Angeles", "Berlin"]
+    var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin"]
     var dataFiltered: [String] = []
     
     private let net = NetworkManager<ForeCastProvider>()

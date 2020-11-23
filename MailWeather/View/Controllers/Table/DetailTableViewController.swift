@@ -13,9 +13,6 @@ class DetailTableViewController: UITableViewController {
     
     var viewModel: TableViewViewModelType?
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     // MARK: - Table view data source
 

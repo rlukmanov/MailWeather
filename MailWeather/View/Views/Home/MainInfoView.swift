@@ -14,22 +14,10 @@ class MainInfoView: UIView {
     // MARK: - Animations
     
     func startDownloadAnimation() {
-        fadeOut(toAlpha: 0.3)
+        fade(toAlpha: 0.3, withDuration: duration)
     }
     
     func stopDownloadAnimation() {
-        fadeIn()
-    }
-    
-    private func fadeIn() {
-        UIView.animate(withDuration: duration, animations: {
-            self.alpha = 1.0
-        }, completion: nil)
-    }
-    
-    private func fadeOut(toAlpha alpha: CGFloat) {
-        UIView.animate(withDuration: duration, animations: {
-            self.alpha = alpha
-        }, completion: nil)
+        fade(toAlpha: 1.0, withDuration: duration)
     }
 }

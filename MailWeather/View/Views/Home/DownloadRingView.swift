@@ -9,7 +9,7 @@ import UIKit
 
 class DownloadRingView: UIView {
     
-    // MARK: - Properrties
+    // MARK: - Properties
     
     @IBInspectable var lineWidth: CGFloat = 27 {
         didSet {
@@ -103,12 +103,14 @@ class DownloadRingView: UIView {
     // MARK: - Animations
     
     func startDownloadAnimation() {
-        fadeIn()
+        fade(toAlpha: 1.0, withDuration: 1.0)
         rotateAnimation(withDuration: duration)
     }
     
     func stopDownloadAnimation() {
-        fadeOut()
+        fade(toAlpha: 0.0, withDuration: 1.0) { [unowned self] in
+            self.layer.removeAllAnimations()
+        }
     }
     
     private func rotateAnimation(withDuration duration: TimeInterval) {
@@ -118,19 +120,5 @@ class DownloadRingView: UIView {
         rotation.isCumulative = true
         rotation.repeatCount = Float.greatestFiniteMagnitude
         layer.add(rotation, forKey: "rotationAnimation")
-    }
-    
-    private func fadeIn() {
-        UIView.animate(withDuration: 1, animations: {
-            self.alpha = 1.0
-        }, completion: nil)
-    }
-    
-    private func fadeOut() {
-        UIView.animate(withDuration: 1, animations: {
-            self.alpha = 0.0
-        }, completion: {_ in
-            self.layer.removeAllAnimations()
-        })
     }
 }

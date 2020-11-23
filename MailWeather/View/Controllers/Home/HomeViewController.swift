@@ -67,6 +67,7 @@ class HomeViewController: UIViewController {
         
         viewModel.image.bind { [unowned self] in
             self.iconImageView.image = $0
+            UIView.animate(withDuration: 1.0) { self.iconImageView.alpha = 1.0 }
         }
         
         viewModel.errorDescription.bind { [unowned self] in
@@ -135,6 +136,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: StopStartDownloadAnimation {
     
     func startDownloadAnimation() {
+        UIView.animate(withDuration: 0.5) { self.iconImageView.alpha = 0.3 }
         internalDownloadRingView.startDownloadAnimation()
         externalDownloadRingView.startDownloadAnimation()
         mainInfoView.startDownloadAnimation()
@@ -174,14 +176,14 @@ extension HomeViewController: UISearchBarDelegate {
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
         endSearchBlur()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        openDetailVCButton.isEnabled = true
         searchBar.resignFirstResponder()
         searchBar.text = ""
-        openDetailVCButton.isEnabled = true
         dropButton.hide()
     }
 }

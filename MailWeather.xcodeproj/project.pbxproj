@@ -37,6 +37,7 @@
 		E1ED31E3256C1AC100572FA0 /* Cod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31E2256C1AC100572FA0 /* Cod.swift */; };
 		E1ED31E6256C1F1700572FA0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31E5256C1F1700572FA0 /* Errors.swift */; };
 		E1ED31EE256C316100572FA0 /* StopStartDownloadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */; };
+		E1ED31F7256C4B8200572FA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
 		E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */; };
@@ -81,6 +82,7 @@
 		E1ED31E2256C1AC100572FA0 /* Cod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cod.swift; sourceTree = "<group>"; };
 		E1ED31E5256C1F1700572FA0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E1ED31ED256C316100572FA0 /* StopStartDownloadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopStartDownloadAnimation.swift; sourceTree = "<group>"; };
+		E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E1ED31F9256C4B8900572FA0 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		E1F09A3F2569CF1900C438E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +371,7 @@
 				E1B5144F256B077E00B896F9 /* String */,
 				E1F09A412569CF7E00C438E0 /* UIColor */,
 				E18776C5256ACA4000285931 /* UIImageView */,
+				E1ED31F9256C4B8900572FA0 /* UIView */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -495,6 +506,7 @@
 				E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */,
 				E1ED31E6256C1F1700572FA0 /* Errors.swift in Sources */,
 				E1A8FF5A2569F375004D9B45 /* WeatherModel.swift in Sources */,
+				E1ED31F7256C4B8200572FA0 /* UIViewExtension.swift in Sources */,
 				E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */,
 				E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */,
 				E1877693256A7E3F00285931 /* Box.swift in Sources */,
