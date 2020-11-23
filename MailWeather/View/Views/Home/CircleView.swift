@@ -64,8 +64,9 @@ class CircleView: UIView {
     
     // MARK: - Animations
     
-    func animateScale(duration: TimeInterval, scaleFactor: CGFloat, delay: TimeInterval = 0) {
+    func animateScale(duration: TimeInterval, scaleFactor: CGFloat, scaleStart: CGFloat, delay: TimeInterval = 0) {
         let durationPart = duration / 2
+        self.transform = CGAffineTransform(scaleX: scaleStart, y: scaleStart)
         
         UIView.animate(withDuration: durationPart, delay: delay, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)

@@ -112,8 +112,8 @@ class HomeViewController: UIViewController {
     private func appearAnimations() {
         internalRingView.animateRing(duration: 1.5)
         externalRingView.animateRing(duration: 1.5, delay: 0.25)
-        leftGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
-        rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.1)
+        leftGroundView.animateScale(duration: 1.5, scaleFactor: 1.2, scaleStart: 0.7)
+        rightGroundView.animateScale(duration: 1.5, scaleFactor: 1.2, scaleStart: 0.7)
     }
     
     func startSearchBlur() {
@@ -127,12 +127,6 @@ class HomeViewController: UIViewController {
     
     func endSearchBlur() {
         blurEffectView?.removeFromSuperview()
-    }
-    
-    private func function(withDelay delay: TimeInterval, completion: @escaping ()->Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            completion()
-        })
     }
 }
 
