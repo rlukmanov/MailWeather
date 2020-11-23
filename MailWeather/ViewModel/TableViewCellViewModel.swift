@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TableViewCellViewModel: TableViewCellViewModelType {
     
@@ -33,6 +34,12 @@ class TableViewCellViewModel: TableViewCellViewModelType {
         return "Осадки\n" + convertPrecipitation(value: weatherAtTime.precipitation) + "%"
     }
     
+    var iconImage: UIImage {
+        return weatherAtTime.icon
+    }
+    
+    private var loadImage: UIImage?
+    
     // MARK: - Init
     
     init(weatherAtTime: WeatherAtTime) {
@@ -45,7 +52,7 @@ class TableViewCellViewModel: TableViewCellViewModelType {
         return String(describing: Int(temp - 273.15)) + "°"
     }
     
-    func convertTime(time: Int, timeZone: Int) -> String {
+    private func convertTime(time: Int, timeZone: Int) -> String {
         guard let timeZone = TimeZone(secondsFromGMT: timeZone) else { return "" }
         
         let date = Date(timeIntervalSince1970: TimeInterval(time))
@@ -63,7 +70,16 @@ class TableViewCellViewModel: TableViewCellViewModelType {
         return resultConvert
     }
 
-    func convertPrecipitation(value: Double) -> String {
+    private func convertPrecipitation(value: Double) -> String {
         return String(Int(round(value * 100)))
+    }
+    
+    private func convertImageURL(iconId: String?) -> URL? {
+        guard let iconId = iconId else { return nil }
+        
+        var stringURL = Constants.Api.urlIcon + "/" + Constants.Api.pathIcon
+        stringURL += iconId
+        stringURL += Constants.Api.formatIcon
+        return URL(string: stringURL)
     }
 }

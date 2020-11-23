@@ -25,6 +25,7 @@ class DetailTableViewCell: UITableViewCell {
             temperatureLabel.text = viewModel.temperature
             humidityLabel.text = viewModel.humidity
             precipitationLabel.text = viewModel.precipitation
+            iconWeatherImageView.image = viewModel.iconImage
         }
     }
 }

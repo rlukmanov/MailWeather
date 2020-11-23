@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TableViewCellViewModelType: class {
     var dt: String { get }
@@ -13,4 +14,5 @@ protocol TableViewCellViewModelType: class {
     var weatherDescription: String { get }
     var humidity: String { get }
     var precipitation: String { get }
+    var iconImage: UIImage { get }
 }

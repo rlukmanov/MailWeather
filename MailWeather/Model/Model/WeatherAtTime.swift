@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct WeatherAtTime {
     var dt: Int
@@ -13,5 +14,6 @@ struct WeatherAtTime {
     var weatherDescription: String
     var humidity: Int
     var precipitation: Double
+    var icon: UIImage
     var timezone: Int
 }
