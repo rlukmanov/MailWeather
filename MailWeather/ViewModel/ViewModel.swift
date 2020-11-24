@@ -16,21 +16,19 @@ class ViewModel {
     
     var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin", "San Francisco", "Novosibirsk", "Paris", "Beijing", "Tokyo"]
     var dataFiltered: [String] = []
-    var previousCity: String = "Moscow"
+    var previousCity: String?
     
-    var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
+    var temperatuture: Box<String?> = Box(nil)
     var errorDescription: Box<String?> = Box(nil)
     var isHiddenRefreshButton: Box<Bool> = Box(true)
     
     private var weather: Weather?
     private let net = NetworkManager<ForeCastProvider>()
     var context: NSManagedObjectContext?
-    weak var delegate: StopStartDownloadAnimation?
-    
-    
     var weatherInit: WeatherInitialize!
+    weak var delegate: StopStartDownloadAnimation?
     
     // MARK: - loadData
     
@@ -96,9 +94,7 @@ class ViewModel {
             let newIconImageView = UIImageView()
             let imageDetailImage: Box<UIImage?> = Box(nil)
             
-            newIconImageView.load(url: url) {
-                imageDetailImage.value = newIconImageView.image
-            }
+            newIconImageView.load(url: url) { imageDetailImage.value = newIconImageView.image }
             
             let weatherAtTime = WeatherAtTime(dt: item.dt,
                                               temperature: item.main.temp,
@@ -118,13 +114,11 @@ class ViewModel {
         self.city.value = city
         self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
         self.weather = Weather(city: city, list: resultWeatherList)
-        
-        saveDataToBase()
     }
     
     // MARK: - saveDataToBase
     
-    private func saveDataToBase() {
+    func saveDataToBase() {
         guard let context = context else { return }
         
         let fetchRequest: NSFetchRequest<WeatherInitialize> = WeatherInitialize.fetchRequest()
@@ -181,8 +175,6 @@ class ViewModel {
                 
                 if let imageData = weatherInitFirst.image {
                     self.image.value = UIImage(data: imageData)
-                } else {
-                    //self.image.value = UIImage(named: "tempIconDay")
                 }
                 
                 self.weather = Weather(city: weatherInitFirst.city!, list: [WeatherAtTime]())
@@ -239,6 +231,12 @@ class ViewModel {
         weatherInitialize.image = imageData
         
         insertDataFromBase(selectedWeather: weatherInitialize)
+    }
+    
+    // MARK: - deinit
+    
+    deinit {
+        saveDataToBase()
     }
 }
 
