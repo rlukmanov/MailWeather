@@ -124,6 +124,13 @@ class ViewModel {
     private func saveDataToBase() {
         guard let context = context else { return }
         
+        let fetchRequest: NSFetchRequest<WeatherInitialize> = WeatherInitialize.fetchRequest()
+        if let objects = try? context.fetch(fetchRequest) {
+            for objects in objects {
+                context.delete(objects)
+            }
+        }
+        
         let weatherInit = WeatherInitialize(context: context)
         
         weatherInit.city = self.city.value
