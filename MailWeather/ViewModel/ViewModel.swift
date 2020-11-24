@@ -16,7 +16,8 @@ class ViewModel {
     
     var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin", "San Francisco", "Novosibirsk", "Paris", "Beijing", "Tokyo"]
     var dataFiltered: [String] = []
-    var previousCity: String?
+    var previousCityFromBase: Box<String?> = Box(nil)
+    var previousDownloadCity: String?
     
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
@@ -41,7 +42,7 @@ class ViewModel {
         errorDescription.value = nil
         isHiddenRefreshButton.value = true
         delegate?.startDownloadAnimation()
-        previousCity = city
+        previousDownloadCity = city
         
         net.load(service: .showWeather(city: city), decodeType: Response.self, completion: { (result) in
             switch result {
@@ -172,6 +173,7 @@ class ViewModel {
                 
                 self.temperatuture.value = String(describing: Int(weatherInitFirst.temperature)) + "°"
                 self.city.value = weatherInitFirst.city
+                self.previousCityFromBase.value = weatherInitFirst.city
                 
                 if let imageData = weatherInitFirst.image {
                     self.image.value = UIImage(data: imageData)
@@ -196,9 +198,7 @@ class ViewModel {
         var imageDataImage = UIImage()
         let imageData = weatherInit.image
         
-        if imageData != nil {
-            imageDataImage = UIImage(data: imageData!)!
-        }
+        if imageData != nil { imageDataImage = UIImage(data: imageData!)! }
         
         let weatherAtTime = WeatherAtTime(dt: Int(weatherInit.dt),
                                                temperature: weatherInit.temperature,
@@ -218,19 +218,11 @@ class ViewModel {
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist") else { return }
         guard let dataDictionary = NSDictionary(contentsOfFile: pathToFile) else { return }
         
-        guard let context = context else { return }
-        guard let entity = NSEntityDescription.entity(forEntityName: Constants.EntityName, in: context) else { return }
-        guard let weatherInitialize = NSManagedObject(entity: entity, insertInto: context) as? WeatherInitialize else { return }
-
-        weatherInitialize.city = dataDictionary["city"] as? String
-        weatherInitialize.temperature = (dataDictionary["temperature"] as? Double)!
+        self.city.value = dataDictionary["city"] as? String
+        self.temperatuture.value = dataDictionary["temperature"] as? String
 
         guard let imageName = dataDictionary["imageName"] as? String else { return }
-        let image = UIImage(named: imageName)
-        guard let imageData = image?.pngData() else { return }
-        weatherInitialize.image = imageData
-        
-        insertDataFromBase(selectedWeather: weatherInitialize)
+        self.image.value = UIImage(named: imageName)
     }
     
     // MARK: - deinit

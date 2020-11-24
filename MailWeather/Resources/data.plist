@@ -2,21 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>dt</key>
-	<integer>0</integer>
-	<key>precipitation</key>
-	<integer>0</integer>
-	<key>humidity</key>
-	<integer>0</integer>
-	<key>timezone</key>
-	<integer>0</integer>
-	<key>weatherDescription</key>
-	<string>Nice</string>
 	<key>imageName</key>
 	<string>tempIconDay</string>
 	<key>city</key>
 	<string>Let&apos;s get it started</string>
 	<key>temperature</key>
-	<integer>0</integer>
+	<string>0</string>
 </dict>
 </plist>

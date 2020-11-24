@@ -85,6 +85,12 @@ class HomeViewController: UIViewController {
             self.refreshButton.isEnabled = !$0
             if !$0 { UIView.animate(withDuration: 1.0) { self.iconImageView.alpha = 1.0 } }
         }
+        
+        if !FirstLaunch.isFirstLaunch() {
+            viewModel.previousCityFromBase.bind { [unowned self] in
+                self.viewModel.loadData(city: $0)
+            }
+        }
     }
     
     // MARK: - configureDropButton
@@ -121,7 +127,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        viewModel.loadData(city: viewModel.previousCity)
+        viewModel.loadData(city: viewModel.previousDownloadCity)
     }
     
     // MARK: - Animations
