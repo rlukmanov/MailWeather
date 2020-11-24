@@ -24,6 +24,7 @@
 		E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */; };
 		E18776BF256AAC9500285931 /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */; };
 		E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */; };
+		E1A39F16256CA067009441C9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A39F15256CA067009441C9 /* CoreDataStack.swift */; };
 		E1A8FF4B2569F2AE004D9B45 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4A2569F2AE004D9B45 /* City.swift */; };
 		E1A8FF4E2569F2CC004D9B45 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF4D2569F2CC004D9B45 /* List.swift */; };
 		E1A8FF512569F321004D9B45 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FF502569F321004D9B45 /* Main.swift */; };
@@ -73,6 +74,7 @@
 		E18776B9256AAAC400285931 /* TableViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelType.swift; sourceTree = "<group>"; };
 		E18776BE256AAC9500285931 /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
 		E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		E1A39F15256CA067009441C9 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E1A8FF4A2569F2AE004D9B45 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E1A8FF4D2569F2CC004D9B45 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E1A8FF502569F321004D9B45 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -150,8 +152,9 @@
 		E1612BCE25657C1B002B8397 /* MailWeather */ = {
 			isa = PBXGroup;
 			children = (
-				E1877696256A801200285931 /* Protocols */,
+				E1A39F15256CA067009441C9 /* CoreDataStack.swift */,
 				E1F09A442569D30C00C438E0 /* Application */,
+				E1877696256A801200285931 /* Protocols */,
 				E1C3F6EC2569EAEC00FA2183 /* Model */,
 				E1F09A3F2569CF1900C438E0 /* View */,
 				E187768C256A795300285931 /* ViewModel */,
@@ -554,6 +557,7 @@
 				E1F09A352566F9F600C438E0 /* DownloadRingView.swift in Sources */,
 				E18776B4256AA50400285931 /* WeatherAtTime.swift in Sources */,
 				E1B51454256B0BEF00B896F9 /* NavigationController.swift in Sources */,
+				E1A39F16256CA067009441C9 /* CoreDataStack.swift in Sources */,
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
 				E1ED31E3256C1AC100572FA0 /* Cod.swift in Sources */,

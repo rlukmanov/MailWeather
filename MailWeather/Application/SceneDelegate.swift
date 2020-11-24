@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let navigationController = window?.rootViewController as! NavigationController
-        let viewController = navigationController.viewControllers.first! as! HomeViewController
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let viewController = navigationController.topViewController as! HomeViewController
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext
         
         viewController.context = context
     }
@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
         
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.saveContext()
     }
 }
 
