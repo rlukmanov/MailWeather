@@ -43,12 +43,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.context = context
         viewModel.delegate = self
         searchBar.delegate = self
         configureDropButton()
         bind()
         
-        viewModel.loadData(city: viewModel.previousCity)
+        viewModel.loadDataFromBase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +57,8 @@ class HomeViewController: UIViewController {
             appearAnimations()
             isFirstAppear = false
         }
+        
+        //viewModel.loadData(city: viewModel.previousCity)
     }
     
     // MARK: - bind

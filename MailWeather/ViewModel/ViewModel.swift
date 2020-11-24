@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import CoreData
 
 class ViewModel {
     
@@ -17,8 +18,6 @@ class ViewModel {
     var dataFiltered: [String] = []
     var previousCity: String = "Moscow"
     
-    private let net = NetworkManager<ForeCastProvider>()
-    
     var temperatuture: Box<String?> = Box(nil)
     var city: Box<String?> = Box(nil)
     var image: Box<UIImage?> = Box(UIImage())
@@ -26,12 +25,14 @@ class ViewModel {
     var isHiddenRefreshButton: Box<Bool> = Box(true)
     
     private var weather: Weather?
-    
+    private let net = NetworkManager<ForeCastProvider>()
+    var context: NSManagedObjectContext?
     weak var delegate: StopStartDownloadAnimation?
     
-    // MARK: - fetchRequest
+    // MARK: - loadData
     
     func loadData(city: String?) {
+        
         guard var city = city else { return }
         city = city.trim()
         guard city.count > 0 else { return }
@@ -114,6 +115,50 @@ class ViewModel {
         self.city.value = city
         self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
         self.weather = Weather(city: city, list: resultWeatherList)
+    }
+    
+    // MARK: - loadDataFromBase
+    
+    func loadDataFromBase() {
+        if FirstLaunch.isFirstLaunch() {
+            getDataFromFile()
+        } else {
+            
+        }
+        
+        //let fetchRequest: NSFetchRequest<WeatherInitialize> = WeatherInitialize.fetchRequest()
+        //fetchRequest.predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArg...##CVarArg#>)
+    }
+    
+    // MARK: - insertDataFrom
+    
+    private func insertDataFrom(selectedWeather weatherInit: WeatherInitialize) {
+        guard let imageData = weatherInit.image else { return }
+        
+        self.image.value = UIImage(data: imageData)
+        self.temperatuture.value = weatherInit.temperatuture
+        self.city.value = weatherInit.city
+    }
+    
+    // MARK: - getDataFromFile
+    
+    private func getDataFromFile() {
+        guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist") else { return }
+        guard let dataDictionary = NSDictionary(contentsOfFile: pathToFile) else { return }
+        
+        guard let context = context else { return }
+        guard let entity = NSEntityDescription.entity(forEntityName: Constants.EntityName, in: context) else { return }
+        guard let weatherInitialize = NSManagedObject(entity: entity, insertInto: context) as? WeatherInitialize else { return }
+
+        weatherInitialize.city = dataDictionary["city"] as? String
+        weatherInitialize.temperatuture = dataDictionary["temperatuture"] as? String
+
+        guard let imageName = dataDictionary["imageName"] as? String else { return }
+        let image = UIImage(named: imageName)
+        guard let imageData = image?.pngData() else { return }
+        weatherInitialize.image = imageData
+        
+        insertDataFrom(selectedWeather: weatherInitialize)
     }
 }
 

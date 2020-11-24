@@ -40,6 +40,8 @@
 		E1ED31F7256C4B8200572FA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */; };
 		E1ED31FC256C52BE00572FA0 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED31FB256C52BE00572FA0 /* URLExtension.swift */; };
 		E1ED3243256C7F9F00572FA0 /* MailWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1ED3241256C7F9F00572FA0 /* MailWeather.xcdatamodeld */; };
+		E1ED3246256C86E500572FA0 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1ED3245256C86E500572FA0 /* data.plist */; };
+		E1ED3249256C96A100572FA0 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED3248256C96A100572FA0 /* FirstLaunch.swift */; };
 		E1F09A1E2565913200C438E0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A1D2565913200C438E0 /* UIColorExtension.swift */; };
 		E1F09A262565B68900C438E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A252565B68900C438E0 /* CircleView.swift */; };
 		E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */; };
@@ -87,6 +89,8 @@
 		E1ED31F6256C4B8200572FA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E1ED31FB256C52BE00572FA0 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		E1ED3242256C7F9F00572FA0 /* MailWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MailWeather.xcdatamodel; sourceTree = "<group>"; };
+		E1ED3245256C86E500572FA0 /* data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		E1ED3248256C96A100572FA0 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
 		E1F09A1D2565913200C438E0 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E1F09A252565B68900C438E0 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E1F09A292565CF8100C438E0 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -304,6 +308,14 @@
 			path = URL;
 			sourceTree = "<group>";
 		};
+		E1ED324B256C970500572FA0 /* FirstLaunch */ = {
+			isa = PBXGroup;
+			children = (
+				E1ED3248256C96A100572FA0 /* FirstLaunch.swift */,
+			);
+			path = FirstLaunch;
+			sourceTree = "<group>";
+		};
 		E1F09A3F2569CF1900C438E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +338,7 @@
 			children = (
 				E1612BD825657C1F002B8397 /* Assets.xcassets */,
 				E1ED3241256C7F9F00572FA0 /* MailWeather.xcdatamodeld */,
+				E1ED3245256C86E500572FA0 /* data.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -343,6 +356,7 @@
 		E1F09A4C2569D52B00C438E0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E1ED324B256C970500572FA0 /* FirstLaunch */,
 				E1F09A562569DE2D00C438E0 /* Constants */,
 				E1F09A542569DE1700C438E0 /* BaseClasses */,
 			);
@@ -459,6 +473,7 @@
 			files = (
 				E1612BDC25657C1F002B8397 /* LaunchScreen.storyboard in Resources */,
 				E1612BD925657C1F002B8397 /* Assets.xcassets in Resources */,
+				E1ED3246256C86E500572FA0 /* data.plist in Resources */,
 				E1612BD725657C1B002B8397 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +557,7 @@
 				E18776BA256AAAC400285931 /* TableViewCellViewModelType.swift in Sources */,
 				E1C3F6EE2569EB9C00FA2183 /* Response.swift in Sources */,
 				E1ED31E3256C1AC100572FA0 /* Cod.swift in Sources */,
+				E1ED3249256C96A100572FA0 /* FirstLaunch.swift in Sources */,
 				E1F09A302566E31300C438E0 /* RingView.swift in Sources */,
 				E1ED31FC256C52BE00572FA0 /* URLExtension.swift in Sources */,
 				E18776B7256AA62C00285931 /* TableViewViewModelType.swift in Sources */,

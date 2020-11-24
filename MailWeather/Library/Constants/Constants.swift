@@ -10,6 +10,7 @@ import Foundation
 struct Constants {
     
     static let NameProject = "MailWeather"
+    static let EntityName = "WeatherInitialize"
     
     struct Api {
         static let url = "https://api.openweathermap.org"
