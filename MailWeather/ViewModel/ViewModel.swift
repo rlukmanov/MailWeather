@@ -14,7 +14,7 @@ class ViewModel {
     
     // MARK: - Properties
     
-    var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin"]
+    var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin", "San Francisco", "Novosibirsk", "Paris", "Beijing", "Tokyo"]
     var dataFiltered: [String] = []
     var previousCity: String = "Moscow"
     
@@ -28,6 +28,9 @@ class ViewModel {
     private let net = NetworkManager<ForeCastProvider>()
     var context: NSManagedObjectContext?
     weak var delegate: StopStartDownloadAnimation?
+    
+    
+    var weatherInit: WeatherInitialize!
     
     // MARK: - loadData
     
@@ -125,36 +128,31 @@ class ViewModel {
         guard let context = context else { return }
         
         let fetchRequest: NSFetchRequest<WeatherInitialize> = WeatherInitialize.fetchRequest()
+        
         if let objects = try? context.fetch(fetchRequest) {
             for objects in objects {
                 context.delete(objects)
             }
         }
         
-        let weatherInit = WeatherInitialize(context: context)
-        
-        weatherInit.city = self.city.value
-        weatherInit.image =  self.image.value?.pngData()
-        weatherInit.temperatuture = self.temperatuture.value
-        
-        let weatherList = [WeatherInitializeDetailList(context: context)] as NSMutableOrderedSet
-        
         guard let weatherAtTimeList = self.weather?.list else { return }
         
+        var index = 0
         for weatherAtTime in weatherAtTimeList {
-            let currentWeather = WeatherInitializeDetailList(context: context)
+            let weatherInitObject = WeatherInitialize(context: context)
             
-            currentWeather.dt = Int32(weatherAtTime.dt)
-            currentWeather.humidity = Int32(weatherAtTime.humidity)
-            currentWeather.precipitation = weatherAtTime.precipitation
-            currentWeather.loadImage = weatherAtTime.icon.value?.pngData()
-            currentWeather.temperature = weatherAtTime.temperature
-            currentWeather.weatherDescription = weatherAtTime.weatherDescription
+            weatherInitObject.dt = Int32(weatherAtTime.dt)
+            weatherInitObject.humidity = Int32(weatherAtTime.humidity)
+            weatherInitObject.precipitation = weatherAtTime.precipitation
+            weatherInitObject.image = weatherAtTime.icon.value?.pngData()
+            weatherInitObject.temperature = weatherAtTime.temperature
+            weatherInitObject.weatherDescription = weatherAtTime.weatherDescription
+            weatherInitObject.timezone = Int32(weatherAtTime.timezone)
+            weatherInitObject.city = self.city.value
+            weatherInitObject.position = Int32(index)
             
-            weatherList.add(currentWeather)
+            index += 1
         }
-        
-        weatherInit.listDetailWeather = weatherList
         
         do {
             try context.save()
@@ -174,10 +172,26 @@ class ViewModel {
             let fetchRequest: NSFetchRequest<WeatherInitialize> = WeatherInitialize.fetchRequest()
             
             do {
-                let weatherInit = try context.fetch(fetchRequest)
+                let weatherInitList = try context.fetch(fetchRequest)
                 
-                guard let weather = weatherInit.first else { return }
-                insertDataFrom(selectedWeather: weather)
+                guard let weatherInitFirst = weatherInitList.first else { return }
+                
+                self.temperatuture.value = String(describing: Int(weatherInitFirst.temperature)) + "°"
+                self.city.value = weatherInitFirst.city
+                
+                if let imageData = weatherInitFirst.image {
+                    self.image.value = UIImage(data: imageData)
+                } else {
+                    //self.image.value = UIImage(named: "tempIconDay")
+                }
+                
+                self.weather = Weather(city: weatherInitFirst.city!, list: [WeatherAtTime]())
+                
+                for weather in weatherInitList {
+                    insertDataFromBase(selectedWeather: weather)
+                }
+                
+                weather?.list.sort { $0.index ?? 0 < $1.index ?? 0 }
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -186,12 +200,24 @@ class ViewModel {
     
     // MARK: - insertDataFrom
     
-    private func insertDataFrom(selectedWeather weatherInit: WeatherInitialize) {
-        guard let imageData = weatherInit.image else { return }
-        print("3")
-        self.image.value = UIImage(data: imageData)
-        self.temperatuture.value = weatherInit.temperatuture
-        self.city.value = weatherInit.city
+    private func insertDataFromBase(selectedWeather weatherInit: WeatherInitialize) {
+        var imageDataImage = UIImage()
+        let imageData = weatherInit.image
+        
+        if imageData != nil {
+            imageDataImage = UIImage(data: imageData!)!
+        }
+        
+        let weatherAtTime = WeatherAtTime(dt: Int(weatherInit.dt),
+                                               temperature: weatherInit.temperature,
+                                               weatherDescription: weatherInit.weatherDescription ?? "",
+                                               humidity: Int(weatherInit.humidity),
+                                               precipitation: weatherInit.precipitation,
+                                               icon: Box(imageDataImage),
+                                               timezone: Int(weatherInit.timezone),
+                                               index: Int(weatherInit.position))
+        
+        self.weather?.list.append(weatherAtTime)
     }
     
     // MARK: - getDataFromFile
@@ -205,14 +231,14 @@ class ViewModel {
         guard let weatherInitialize = NSManagedObject(entity: entity, insertInto: context) as? WeatherInitialize else { return }
 
         weatherInitialize.city = dataDictionary["city"] as? String
-        weatherInitialize.temperatuture = dataDictionary["temperatuture"] as? String
+        weatherInitialize.temperature = (dataDictionary["temperature"] as? Double)!
 
         guard let imageName = dataDictionary["imageName"] as? String else { return }
         let image = UIImage(named: imageName)
         guard let imageData = image?.pngData() else { return }
         weatherInitialize.image = imageData
         
-        insertDataFrom(selectedWeather: weatherInitialize)
+        insertDataFromBase(selectedWeather: weatherInitialize)
     }
 }
 
@@ -226,7 +252,6 @@ extension ViewModel: TableViewViewModelType {
     
     func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModel? {
         let weatherAtCell = (weather?.list[indexPath.row])!
-
         return TableViewCellViewModel(weatherAtTime: weatherAtCell)
     }
 }

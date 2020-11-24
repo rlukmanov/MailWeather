@@ -44,12 +44,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.context = context
+        viewModel.loadDataFromBase()
         viewModel.delegate = self
         searchBar.delegate = self
         configureDropButton()
         bind()
-        
-        viewModel.loadDataFromBase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,7 +114,7 @@ class HomeViewController: UIViewController {
     @IBAction func openDetailVC(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyboard.instantiateViewController(identifier: Constants.Identifier.detailVC) as! DetailTableViewController
-        
+
         newViewController.viewModel = viewModel
 
         self.navigationController?.pushViewController(newViewController, animated: true)

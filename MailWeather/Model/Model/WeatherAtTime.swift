@@ -16,4 +16,5 @@ struct WeatherAtTime {
     var precipitation: Double
     var icon: Box<UIImage?>
     var timezone: Int
+    var index: Int?
 }
