@@ -198,6 +198,7 @@ class ViewModel {
                 self.temperatuture.value = String(describing: Int(weatherInitFirst.temperature)) + "°"
                 self.city.value = weatherInitFirst.city
                 self.previousCityFromBase.value = weatherInitFirst.city
+                setColorTheme(time: Int(weatherInitFirst.dt), timeZone: Int(weatherInitFirst.timezone))
                 
                 if let imageData = weatherInitFirst.image {
                     self.image.value = UIImage(data: imageData)
