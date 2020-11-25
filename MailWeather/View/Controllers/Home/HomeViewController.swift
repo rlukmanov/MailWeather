@@ -122,10 +122,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func openDetailVC(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyboard.instantiateViewController(identifier: Constants.Identifier.detailVC) as! DetailTableViewController
+        guard let newViewController = storyboard.instantiateViewController(identifier: Constants.Identifier.detailVC) as? DetailTableViewController else { return }
 
         newViewController.viewModel = viewModel
-
+        newViewController.tableView.backgroundColor = view.backgroundColor
+        
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     

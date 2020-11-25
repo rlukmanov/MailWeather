@@ -18,7 +18,7 @@ enum Errors: Int {
     }
     
     init(code: String) {
-        self = Errors(rawValue: Int(code) ?? 404) ?? .other
+        self = Errors(rawValue: Int(code) ?? 0) ?? .other
     }
     
     func getDescriptionError() -> String {

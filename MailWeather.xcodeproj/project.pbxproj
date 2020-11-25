@@ -160,7 +160,6 @@
 		E1612BCE25657C1B002B8397 /* MailWeather */ = {
 			isa = PBXGroup;
 			children = (
-				E1A39F15256CA067009441C9 /* CoreDataStack.swift */,
 				E1F09A442569D30C00C438E0 /* Application */,
 				E1877696256A801200285931 /* Protocols */,
 				E1C3F6EC2569EAEC00FA2183 /* Model */,
@@ -267,6 +266,14 @@
 				E18776C1256ACA1E00285931 /* UIImageViewExtension.swift */,
 			);
 			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		E190281A256DF7060037BB94 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				E1A39F15256CA067009441C9 /* CoreDataStack.swift */,
+			);
+			path = CoreDataStack;
 			sourceTree = "<group>";
 		};
 		E19FEFEB256DC1C100E31FD6 /* ColorTheme */ = {
@@ -378,6 +385,7 @@
 		E1F09A4C2569D52B00C438E0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E190281A256DF7060037BB94 /* CoreDataStack */,
 				E19FEFEB256DC1C100E31FD6 /* ColorTheme */,
 				E1F09A562569DE2D00C438E0 /* Constants */,
 				E1F09A542569DE1700C438E0 /* BaseClasses */,
