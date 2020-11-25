@@ -13,7 +13,7 @@ class RingView: UIView {
     
     @IBInspectable var ringColor: UIColor = .white {
         didSet {
-            ringLayer.fillColor = ringColor.cgColor
+            ringLayer.strokeColor = ringColor.cgColor
         }
     }
     
@@ -21,62 +21,33 @@ class RingView: UIView {
     private var radius: CGFloat?
     private var ringLayer: CAShapeLayer = CAShapeLayer()
     
-    // MARK: - init
+    // MARK: - draw
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .none
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        backgroundColor = .none
-    }
-    
-    // MARK: - layoutSubviews
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print("!")
+    override func draw(_ rect: CGRect) {
         radius = layer.frame.height / 2
         
-        let shapeLayer = drawRing(startAngle: CGFloat(-Double.pi / 2),
-                                  endAngle: CGFloat(Double.pi * 1.5),
-                                  ringColor: ringColor)
+        let centerView = CGPoint(x: radius!,
+                                 y: radius!)
         
-        guard let ringLayer = shapeLayer else { return }
+        radius! -= lineWidth / 2
+        
+        let ringPath = UIBezierPath(arcCenter: centerView,
+                                    radius: radius!,
+                                    startAngle: CGFloat(-Double.pi / 2),
+                                    endAngle: CGFloat(3 * Double.pi / 2),
+                                    clockwise: true)
+        
+        let ringLayer = CAShapeLayer()
+        ringLayer.path = ringPath.cgPath
+        
+        ringLayer.fillColor = UIColor.clear.cgColor
+        ringLayer.strokeColor = ringColor.cgColor
+        ringLayer.lineWidth = lineWidth
         
         ringLayer.strokeEnd = 0.0
         self.ringLayer = ringLayer
         
         layer.addSublayer(ringLayer)
-    }
-    
-    // MARK: - drawRing
-    
-    func drawRing(startAngle: CGFloat, endAngle: CGFloat, ringColor: UIColor) -> CAShapeLayer? {
-        guard var radius = radius else { return nil }
-        let centerView = CGPoint(x: radius,
-                                 y: radius)
-        
-        radius -= lineWidth / 2
-        
-        let ringPath = UIBezierPath(arcCenter: centerView,
-                                      radius: radius,
-                                      startAngle: startAngle,
-                                      endAngle: endAngle,
-                                      clockwise: true)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = ringPath.cgPath
-        
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = ringColor.cgColor
-        shapeLayer.lineWidth = lineWidth
-        
-        return shapeLayer
     }
     
     // MARK: - Animations

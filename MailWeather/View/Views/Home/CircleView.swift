@@ -16,27 +16,20 @@ class CircleView: UIView {
             shapeLayer.fillColor = roundColor.cgColor
         }
     }
+    
     private var radius: CGFloat?
     private var shapeLayer: CAShapeLayer = CAShapeLayer()
     
-    // MARK: - layoutSubviews
+    // MARK: - draw
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    override func draw(_ rect: CGRect) {
         radius = layer.frame.height / 2
-        drawCircle()
-    }
-    
-    // MARK: - drawCircle
-    
-    func drawCircle() {
-        guard let radius = radius else { return }
-        let centerView = CGPoint(x: radius,
-                                 y: radius)
+        
+        let centerView = CGPoint(x: radius!,
+                                 y: radius!)
         
         let circlePath = UIBezierPath(arcCenter: centerView,
-                                      radius: radius,
+                                      radius: radius!,
                                       startAngle: CGFloat(-Double.pi / 2),
                                       endAngle: CGFloat(Double.pi * 1.5),
                                       clockwise: true)
