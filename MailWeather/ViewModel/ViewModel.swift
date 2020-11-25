@@ -14,8 +14,7 @@ class ViewModel {
     
     // MARK: - Properties
     
-    var data: [String] = ["Moscow", "London", "New York", "Los Angeles", "Berlin", "San Francisco", "Novosibirsk", "Paris", "Beijing", "Tokyo"]
-    var dataFiltered: [String] = []
+    var cityHistoryList = CityHistoryList()
     var previousCityFromBase: Box<String?> = Box(nil)
     var previousDownloadCity: String?
     
@@ -79,23 +78,13 @@ class ViewModel {
         calendar.timeZone = timeZone
         
         let currentHour = calendar.component(.hour, from: date)
-        if currentHour >= 21 || currentHour <= 9 {
+        if currentHour >= 23 || currentHour <= 9 {
             self.colorTheme.value = .dark
         } else {
             self.colorTheme.value = .light
         }
-        
+
         return
-    }
-    
-    // MARK: - getFilterList
-    
-    func getFilterList(searchText: String) -> [String] {
-        dataFiltered = searchText.isEmpty ? data : data.filter({ (dat) -> Bool in
-            dat.range(of: searchText, options: .caseInsensitive) != nil
-        })
-        
-        return Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultHelperListCount)))
     }
     
     // MARK: - convertLoadedData
@@ -136,6 +125,7 @@ class ViewModel {
         let newIconImageView = UIImageView()
         newIconImageView.load(url: url) { self.image.value = newIconImageView.image }
         
+        self.cityHistoryList.appendCity(appendCity: city)
         self.city.value = city
         self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
         self.weather = Weather(city: city ?? "", list: resultWeatherList)
@@ -243,11 +233,14 @@ class ViewModel {
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist") else { return }
         guard let dataDictionary = NSDictionary(contentsOfFile: pathToFile) else { return }
         
-        self.city.value = dataDictionary["city"] as? String
-        self.temperatuture.value = dataDictionary["temperature"] as? String
+        self.city.value = dataDictionary["City"] as? String
+        self.temperatuture.value = dataDictionary["Temperature"] as? String
 
-        guard let imageName = dataDictionary["imageName"] as? String else { return }
+        guard let imageName = dataDictionary["ImageName"] as? String else { return }
         self.image.value = UIImage(named: imageName)
+        
+        guard let cityList = dataDictionary["CityList"] as? [String] else { return }
+        self.cityHistoryList = CityHistoryList(cityList: cityList)
     }
     
     // MARK: - deinit

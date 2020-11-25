@@ -38,6 +38,6 @@ struct Constants {
     
     struct Other {
         static let countRows = 8
-        static let resultHelperListCount: Int = 7
+        static let cityHistoryListCount: Int = 7
     }
 }

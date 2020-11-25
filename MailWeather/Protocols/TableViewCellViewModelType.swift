@@ -14,5 +14,4 @@ protocol TableViewCellViewModelType: class {
     var weatherDescription: String { get }
     var humidity: String { get }
     var precipitation: String { get }
-    //var iconImage: UIImage { get }
 }

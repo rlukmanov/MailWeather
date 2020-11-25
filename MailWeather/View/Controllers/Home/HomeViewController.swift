@@ -200,12 +200,14 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        dropButton.dataSource = viewModel.getFilterList(searchText: searchText)
+        dropButton.dataSource = viewModel.cityHistoryList.getFilterList(searchText: searchText)
         dropButton.show()
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         openDetailVCButton.isEnabled = false
+        dropButton.dataSource = viewModel.cityHistoryList.getFilterList()
+        dropButton.show()
         startSearchBlur()
         searchBar.setShowsCancelButton(true, animated: true)
     }

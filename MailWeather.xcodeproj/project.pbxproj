@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D450A6A04063A692B2369987 /* Pods_MailWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99ACEA54F7E9EC3A48D1FBB4 /* Pods_MailWeather.framework */; };
+		E10F59A8256E052000095052 /* CityHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F59A7256E052000095052 /* CityHistoryList.swift */; };
 		E1612BD025657C1B002B8397 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1612BCF25657C1B002B8397 /* AppDelegate.swift */; };
 		E1612BD225657C1B002B8397 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1612BD125657C1B002B8397 /* SceneDelegate.swift */; };
 		E1612BD425657C1B002B8397 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1612BD325657C1B002B8397 /* HomeViewController.swift */; };
@@ -60,6 +61,7 @@
 		2427DF29B9AC1639CAD8810E /* Pods-MailWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MailWeather.debug.xcconfig"; path = "Target Support Files/Pods-MailWeather/Pods-MailWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		90EC644EDA8A9565426CC0A0 /* Pods-MailWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MailWeather.release.xcconfig"; path = "Target Support Files/Pods-MailWeather/Pods-MailWeather.release.xcconfig"; sourceTree = "<group>"; };
 		99ACEA54F7E9EC3A48D1FBB4 /* Pods_MailWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MailWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10F59A7256E052000095052 /* CityHistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoryList.swift; sourceTree = "<group>"; };
 		E1612BCC25657C1B002B8397 /* MailWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1612BCF25657C1B002B8397 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1612BD125657C1B002B8397 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 				99ACEA54F7E9EC3A48D1FBB4 /* Pods_MailWeather.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E10F59AA256E054900095052 /* CityHistoryList */ = {
+			isa = PBXGroup;
+			children = (
+				E10F59A7256E052000095052 /* CityHistoryList.swift */,
+			);
+			path = CityHistoryList;
 			sourceTree = "<group>";
 		};
 		E1612BC325657C1B002B8397 = {
@@ -385,10 +395,13 @@
 		E1F09A4C2569D52B00C438E0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E1F09A542569DE1700C438E0 /* BaseClasses */,
+				E1877691256A7E3400285931 /* Box */,
+				E10F59AA256E054900095052 /* CityHistoryList */,
 				E190281A256DF7060037BB94 /* CoreDataStack */,
 				E19FEFEB256DC1C100E31FD6 /* ColorTheme */,
 				E1F09A562569DE2D00C438E0 /* Constants */,
-				E1F09A542569DE1700C438E0 /* BaseClasses */,
+				E1ED324B256C970500572FA0 /* FirstLaunch */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -424,8 +437,6 @@
 		E1F09A542569DE1700C438E0 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
-				E1ED324B256C970500572FA0 /* FirstLaunch */,
-				E1877691256A7E3400285931 /* Box */,
 				E1B5144F256B077E00B896F9 /* String */,
 				E1F09A412569CF7E00C438E0 /* UIColor */,
 				E18776C5256ACA4000285931 /* UIImageView */,
@@ -562,6 +573,7 @@
 				E187769C256A89D100285931 /* DetailTableViewController.swift in Sources */,
 				E1B51451256B079900B896F9 /* StringExtension.swift in Sources */,
 				E1A8FF5F2569F803004D9B45 /* URLRequestBuilder.swift in Sources */,
+				E10F59A8256E052000095052 /* CityHistoryList.swift in Sources */,
 				E1F09A2A2565CF8100C438E0 /* CustomSearchBar.swift in Sources */,
 				E190280F256DE6F90037BB94 /* ForeCastProvider.swift in Sources */,
 				E18776C2256ACA1E00285931 /* UIImageViewExtension.swift in Sources */,

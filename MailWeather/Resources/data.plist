@@ -2,11 +2,33 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>imageName</key>
+	<key>CityList</key>
+	<array>
+		<string>Cupertino</string>
+		<string>Moscow</string>
+		<string>Munich</string>
+		<string>Tomsk</string>
+		<string>Los Angeles</string>
+		<string>San Francisco</string>
+		<string>Berlin</string>
+		<string>London</string>
+		<string>New York</string>
+		<string>Rome</string>
+		<string>Saint Petersburg</string>
+		<string>Madrid</string>
+		<string>Beijing</string>
+		<string>Las Vegas</string>
+		<string>Novosibirsk</string>
+		<string>Tokyo</string>
+		<string>Hong Kong</string>
+		<string>Paris</string>
+		<string>Dubai</string>
+	</array>
+	<key>ImageName</key>
 	<string>tempIconDay</string>
-	<key>city</key>
+	<key>City</key>
 	<string>Let&apos;s get it started</string>
-	<key>temperature</key>
+	<key>Temperature</key>
 	<string>0</string>
 </dict>
 </plist>
