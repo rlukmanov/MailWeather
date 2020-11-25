@@ -43,7 +43,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
-                                        <color key="value" red="0.81410580870000004" green="0.91679316759999996" blue="0.95295041800000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.81568627450980391" green="0.91764705882352937" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -55,13 +55,13 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
-                                        <color key="value" red="0.55388718839999995" green="0.84866315130000003" blue="0.9451184869" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.55294117647058827" green="0.84705882352941175" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zo7-Bz-7ew" customClass="CircleView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="86" y="283" width="242" height="242"/>
-                                <color key="backgroundColor" red="0.13725490196078433" green="0.50588235294117645" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.5725490196078431" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Zo7-Bz-7ew" secondAttribute="height" multiplier="1:1" id="DMl-1c-Jr7"/>
                                 </constraints>
@@ -69,11 +69,14 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="roundColor">
                                         <color key="value" red="0.13725490196078433" green="0.50588235294117645" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW1-i2-uoZ" customClass="CircleView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="146" y="609" width="368" height="368"/>
-                                <color key="backgroundColor" red="0.34509803921568627" green="0.92941176470588238" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.019607843137254902" green="0.95294117647058818" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="368" id="dNv-QY-9v3"/>
                                     <constraint firstAttribute="width" constant="368" id="zMW-rJ-5Oa"/>
@@ -82,11 +85,14 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="roundColor">
                                         <color key="value" red="0.34509803921568627" green="0.92941176470588238" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52c-ZH-z6d" customClass="CircleView" customModule="MailWeather" customModuleProvider="target">
                                 <rect key="frame" x="-65" y="713" width="296" height="296"/>
-                                <color key="backgroundColor" red="0.2627450980392157" green="0.63137254901960782" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.011764705882352941" green="0.6470588235294118" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="296" id="35z-uE-xSQ"/>
                                     <constraint firstAttribute="width" constant="296" id="7a3-Ro-6V9"/>
@@ -94,6 +100,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="roundColor">
                                         <color key="value" red="0.2627450980392157" green="0.63137254901960782" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -195,7 +204,7 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.14901960784313725" green="0.76470588235294112" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.15294117647058825" green="0.72941176470588232" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ehI-1F-ZId" secondAttribute="trailing" constant="17" id="0Pm-u8-yLt"/>
                             <constraint firstItem="Zo7-Bz-7ew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="0e6-wA-Tqh"/>
@@ -246,6 +255,7 @@
                     <navigationItem key="navigationItem" id="lkB-RS-fKS"/>
                     <connections>
                         <outlet property="backgroundView" destination="JR3-fN-OaK" id="C6T-w1-MjR"/>
+                        <outlet property="centerCircleView" destination="Zo7-Bz-7ew" id="lkz-tH-FpJ"/>
                         <outlet property="cityLabel" destination="Y2g-WM-PIm" id="w4x-pZ-whe"/>
                         <outlet property="errorLabel" destination="TwV-py-uaT" id="hP8-TL-ymh"/>
                         <outlet property="externalDownloadRingView" destination="7Fy-TW-0rG" id="HRo-BP-NXu"/>

@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var externalRingView: RingView!
     @IBOutlet weak var internalDownloadRingView: DownloadRingView!
     @IBOutlet weak var externalDownloadRingView: DownloadRingView!
+    @IBOutlet weak var centerCircleView: CircleView!
     @IBOutlet weak var mainInfoView: MainInfoView!
     @IBOutlet weak var leftGroundView: CircleView!
     @IBOutlet weak var rightGroundView: CircleView!
@@ -56,8 +57,6 @@ class HomeViewController: UIViewController {
             appearAnimations()
             isFirstAppear = false
         }
-        
-        //viewModel.loadData(city: viewModel.previousCity)
     }
     
     // MARK: - bind
@@ -84,6 +83,10 @@ class HomeViewController: UIViewController {
             self.refreshButton.isHidden = $0
             self.refreshButton.isEnabled = !$0
             if !$0 { UIView.animate(withDuration: 1.0) { self.iconImageView.alpha = 1.0 } }
+        }
+        
+        viewModel.colorTheme.bind { [unowned self] in
+            self.setColorTheme(colorTheme: $0)
         }
         
         if !FirstLaunch.isFirstLaunch() {
@@ -128,6 +131,17 @@ class HomeViewController: UIViewController {
     
     @IBAction func refresh(_ sender: Any) {
         viewModel.loadData(city: viewModel.previousDownloadCity)
+    }
+    
+    // MARK: - setColorTheme
+    
+    private func setColorTheme(colorTheme: ColorTheme) {
+        self.view.backgroundColor = UIColor(hex: colorTheme.backgroundColor)
+        if let color = UIColor(hex: colorTheme.leftGroundViewColor) { self.leftGroundView.roundColor = color }
+        if let color = UIColor(hex: colorTheme.rightGroundViewColor) { self.rightGroundView.roundColor = color }
+        if let color = UIColor(hex: colorTheme.externalRingViewColor) { self.externalRingView.ringColor = color }
+        if let color = UIColor(hex: colorTheme.internalRingViewColor) { self.internalRingView.ringColor = color }
+        if let color = UIColor(hex: colorTheme.centerCircleViewColor) { self.centerCircleView.roundColor = color }
     }
     
     // MARK: - Animations

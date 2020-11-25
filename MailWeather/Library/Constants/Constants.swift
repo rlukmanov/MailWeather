@@ -18,7 +18,7 @@ struct Constants {
         static let key = "da9f74ec5dd6df3021ce4c5f8ecdc569"
         static let path = "data/2.5/forecast"
         static let units = "metric"
-        static let pathIcon = "img/wn/" // 10d@2x.png
+        static let pathIcon = "img/wn/"
         static let language = "usa"
         static let formatIcon = "@2x.png"
     }
@@ -38,6 +38,6 @@ struct Constants {
     
     struct Other {
         static let countRows = 8
-        static let resultListCount: Int = 7
+        static let resultHelperListCount: Int = 7
     }
 }

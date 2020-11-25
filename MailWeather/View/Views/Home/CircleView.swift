@@ -11,23 +11,13 @@ class CircleView: UIView {
     
     // MARK: - properties
     
-    @IBInspectable var roundColor: UIColor = .white
+    @IBInspectable var roundColor: UIColor = .white {
+        didSet {
+            shapeLayer.fillColor = roundColor.cgColor
+        }
+    }
     private var radius: CGFloat?
     private var shapeLayer: CAShapeLayer = CAShapeLayer()
-    
-    // MARK: - init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .none
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        backgroundColor = .none
-    }
     
     // MARK: - layoutSubviews
     

@@ -24,6 +24,7 @@ class ViewModel {
     var temperatuture: Box<String?> = Box(nil)
     var errorDescription: Box<String?> = Box(nil)
     var isHiddenRefreshButton: Box<Bool> = Box(true)
+    var colorTheme: Box<ColorTheme> = Box(.light)
     
     private var weather: Weather?
     private let net = NetworkManager<ForeCastProvider>()
@@ -67,6 +68,26 @@ class ViewModel {
         })
     }
     
+    // MARK: - setColorTheme
+    
+    private func setColorTheme(time: Int?, timeZone: Int?) {
+        guard let timeZoneInt = timeZone, let time = time else { return }
+        guard let timeZone = TimeZone(secondsFromGMT: timeZoneInt) else { return }
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(time))
+        var calendar = Calendar.current
+        calendar.timeZone = timeZone
+        
+        let currentHour = calendar.component(.hour, from: date)
+        if currentHour >= 21 || currentHour <= 9 {
+            self.colorTheme.value = .dark
+        } else {
+            self.colorTheme.value = .light
+        }
+        
+        return
+    }
+    
     // MARK: - getFilterList
     
     func getFilterList(searchText: String) -> [String] {
@@ -74,7 +95,7 @@ class ViewModel {
             dat.range(of: searchText, options: .caseInsensitive) != nil
         })
         
-        return Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultListCount)))
+        return Array(dataFiltered.prefix(min(dataFiltered.count, Constants.Other.resultHelperListCount)))
     }
     
     // MARK: - convertLoadedData
@@ -86,7 +107,6 @@ class ViewModel {
             return
         }
         
-        let city = response.city!.name
         let timezone = response.city?.timezone
         var resultWeatherList = [WeatherAtTime]()
         
@@ -108,13 +128,17 @@ class ViewModel {
             resultWeatherList.append(weatherAtTime)
         }
         
+        let city = response.city?.name
+        
+        setColorTheme(time: listWeather.first?.dt, timeZone: timezone)
+        
         let url = URL(iconId: listWeather.first?.weather.first?.icon)
         let newIconImageView = UIImageView()
         newIconImageView.load(url: url) { self.image.value = newIconImageView.image }
         
         self.city.value = city
         self.temperatuture.value = String(describing: Int((listWeather.first?.main.temp)!))  + "°"
-        self.weather = Weather(city: city, list: resultWeatherList)
+        self.weather = Weather(city: city ?? "", list: resultWeatherList)
     }
     
     // MARK: - saveDataToBase

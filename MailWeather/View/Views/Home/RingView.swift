@@ -11,7 +11,12 @@ class RingView: UIView {
     
     // MARK: - properties
     
-    @IBInspectable var ringColor: UIColor = .white
+    @IBInspectable var ringColor: UIColor = .white {
+        didSet {
+            ringLayer.fillColor = ringColor.cgColor
+        }
+    }
+    
     @IBInspectable var lineWidth: CGFloat = 27.0
     private var radius: CGFloat?
     private var ringLayer: CAShapeLayer = CAShapeLayer()
@@ -34,7 +39,7 @@ class RingView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        print("!")
         radius = layer.frame.height / 2
         
         let shapeLayer = drawRing(startAngle: CGFloat(-Double.pi / 2),
